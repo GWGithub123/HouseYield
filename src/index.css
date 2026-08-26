@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Financial Independence levers — range slider thumb */
+.fi-lever-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 2px solid #0ea5e9;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.fi-lever-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.fi-lever-slider::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 2px solid #0ea5e9;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
+  cursor: pointer;
+}
+.fi-lever-slider:focus {
+  outline: none;
+}
+
+/* Google Places Autocomplete dropdown styling */
+.pac-container {
+  border-radius: 0.75rem;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+  margin-top: 4px;
+  z-index: 10000 !important;
+}
+.pac-item {
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border-top: 1px solid #f3f4f6;
+}
+.pac-item:first-child {
+  border-top: none;
+}
+.pac-item:hover,
+.pac-item-selected {
+  background-color: #ecfdf5;
+}
+.pac-item-query {
+  font-size: 0.875rem;
+  color: #111827;
+  font-weight: 600;
+}
+.pac-icon {
+  margin-right: 8px;
+}
+.pac-matched {
+  color: #059669;
+  font-weight: 700;
+}
+
+/* ===== HouseYield glass design system (Wealth & Projections pages) ===== */
+/* Light liquid-glass card with a gradient "lit" border, matching the
+   Dashboard additional-analytics surfaces. Apply alongside layout classes. */
+.hy-glass-card {
+  position: relative;
+  isolation: isolate;
+  border-radius: 24px;
+  border: 1px solid rgba(203, 213, 225, 0.85);
+  background-color: rgba(255, 255, 255, 0.94);
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 48%, rgba(240, 253, 250, 0.85) 100%),
+    linear-gradient(115deg, rgba(20, 184, 166, 0.10) 0%, transparent 42%),
+    linear-gradient(245deg, rgba(59, 130, 246, 0.09) 0%, transparent 46%);
+  box-shadow:
+    0 18px 44px rgba(15, 23, 42, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Gradient lit border drawn with a masked padding overlay. */
+.hy-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.30) 0%, rgba(20, 184, 166, 0.22) 32%, rgba(226, 232, 240, 0.85) 62%, rgba(255, 255, 255, 0.95) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Top edge glow line. */
+.hy-glass-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.35) 20%, rgba(20, 184, 166, 0.45) 50%, rgba(14, 165, 233, 0.35) 80%, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+:where(.hy-glass-card) > :where(*) {
+  position: relative;
+  z-index: 3;
+}
+
+/* Inset chart/data panel inside a glass card. */
+.hy-glass-inset {
+  border-radius: 18px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 250, 252, 0.92) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* Compact control tray used to consolidate chart controls into one bar. */
+.hy-control-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.92) 0%, rgba(241, 245, 249, 0.88) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  padding: 0.45rem 0.6rem;
+}
+
+@keyframes valve-panel-glow {
+  0%, 100% { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35); }
+  50% { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75), 0 0 0 3px rgba(251, 191, 36, 0.12); }
+}
+
+@keyframes valve-label-shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.72; }
+}
+
+@keyframes valve-dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.85; }
+}
+
+@keyframes valve-spin {
+  to { transform: rotate(360deg); }
+}
+
+/**
+ * Twin zoom ladder. The three rungs are separate renderers with no shared
+ * camera, so this is a scale-and-fade that suggests movement between scales
+ * rather than a true continuous zoom.
+ *
+ * The direction matters more than the distance. Moving inward, the incoming
+ * view starts small and grows, because the ground it covers occupied less of
+ * the frame a moment ago; moving outward it starts large and settles back. A
+ * symmetric fade reads as a slideshow — you register that the picture changed
+ * but not which way you travelled, which is the one thing a zoom ladder has to
+ * communicate. The earlier version scaled by 1.5%, which is below the
+ * threshold where any of that is legible.
+ */
+@keyframes hy-twin-zoom-in {
+  from { opacity: 0; transform: scale(0.88); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes hy-twin-zoom-out {
+  from { opacity: 0; transform: scale(1.12); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.hy-twin-layer-in,
+.hy-twin-layer-out {
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.hy-twin-layer-in {
+  animation: hy-twin-zoom-in 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hy-twin-layer-out {
+  animation: hy-twin-zoom-out 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hy-twin-layer-in,
+  .hy-twin-layer-out { animation: none; }
+}
+
+.valve-panel-transition {
+  animation: valve-panel-glow 2s ease-in-out infinite;
+}
+
+.valve-status-transition {
+  animation: valve-panel-glow 2s ease-in-out infinite;
+}
+
+.valve-label-shimmer {
+  animation: valve-label-shimmer 1.4s ease-in-out infinite;
+}
+
+.valve-dot-pulse {
+  animation: valve-dot-pulse 1.2s ease-in-out infinite;
+}
+
+.valve-spinner {
+  animation: valve-spin 0.9s linear infinite;
+}

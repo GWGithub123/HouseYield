@@ -1,0 +1,585 @@
+{
+  "cashflowTrend": [
+    {
+      "entryCount": 8,
+      "expenses": 2804.12,
+      "income": 5100,
+      "month": "January",
+      "net": 2295.88,
+      "net_income": 2295.88,
+      "revenue": 5100,
+      "year": 2025
+    },
+    {
+      "entryCount": 8,
+      "expenses": 3157.84,
+      "income": 5100,
+      "month": "February",
+      "net": 1942.16,
+      "net_income": 1942.16,
+      "revenue": 5100,
+      "year": 2025
+    },
+    {
+      "entryCount": 8,
+      "expenses": 2699.77,
+      "income": 5100,
+      "month": "March",
+      "net": 2400.23,
+      "net_income": 2400.23,
+      "revenue": 5100,
+      "year": 2025
+    },
+    {
+      "entryCount": 8,
+      "expenses": 4797.15,
+      "income": 5100,
+      "month": "April",
+      "net": 302.85,
+      "net_income": 302.85,
+      "revenue": 5100,
+      "year": 2025
+    },
+    {
+      "entryCount": 8,
+      "expenses": 3049.55,
+      "income": 5100,
+      "month": "May",
+      "net": 2050.45,
+      "net_income": 2050.45,
+      "revenue": 5100,
+      "year": 2025
+    },
+    {
+      "entryCount": 8,
+      "expenses": 2710.36,
+      "income": 5100,
+      "month": "June",
+      "net": 2389.64,
+      "net_income": 2389.64,
+      "revenue": 5100,
+      "year": 2025
+    },
+    {
+      "entryCount": 8,
+      "expenses": 4788.92,
+      "income": 5250,
+      "month": "July",
+      "net": 461.08,
+      "net_income": 461.08,
+      "revenue": 5250,
+      "year": 2025
+    },
+    {
+      "entryCount": 8,
+      "expenses": 3227.48,
+      "income": 5250,
+      "month": "August",
+      "net": 2022.52,
+      "net_income": 2022.52,
+      "revenue": 5250,
+      "year": 2025
+    },
+    {
+      "entryCount": 8,
+      "expenses": 2700.09,
+      "income": 5250,
+      "month": "September",
+      "net": 2549.91,
+      "net_income": 2549.91,
+      "revenue": 5250,
+      "year": 2025
+    },
+    {
+      "entryCount": 9,
+      "expenses": 5207.7,
+      "income": 5250,
+      "month": "October",
+      "net": 42.3,
+      "net_income": 42.3,
+      "revenue": 5250,
+      "year": 2025
+    },
+    {
+      "entryCount": 7,
+      "expenses": 2475.42,
+      "income": 5350,
+      "month": "November",
+      "net": 2874.58,
+      "net_income": 2874.58,
+      "revenue": 5350,
+      "year": 2025
+    },
+    {
+      "entryCount": 9,
+      "expenses": 5553.08,
+      "income": 5250,
+      "month": "December",
+      "net": -303.08,
+      "net_income": -303.08,
+      "revenue": 5250,
+      "year": 2025
+    }
+  ],
+  "depreciation": {
+    "assets": [
+      {
+        "accumulatedDepreciation": 62266.67,
+        "currentYearDepreciation": 16981.82,
+        "depreciableBasis": 467000,
+        "propertyId": "fixture-prestwick-rental-2025",
+        "propertyName": "Prestwick Single-Family Rental",
+        "remainingBasis": 404733.33
+      }
+    ],
+    "summary": {
+      "assetCount": 1,
+      "totalAccumulatedDepreciation": 62266.67,
+      "totalCost": 785000,
+      "totalCurrentYearDepreciation": 16981.82,
+      "totalDepreciableBasis": 467000
+    }
+  },
+  "estimatedTaxes": {
+    "asOfDate": "2025-12-31",
+    "assumptions": {
+      "filingStatus": "married_filing_jointly",
+      "homeState": "MD",
+      "otherDeductions": 0,
+      "otherIncome": 185000,
+      "taxCredits": 2000,
+      "withholdingYtd": 24000
+    },
+    "payments": [],
+    "quarters": [
+      {
+        "breakdown": {
+          "annualizedIncome": 194571.26,
+          "annualizedTaxableIncome": 161157.01,
+          "expenses": 8661.73,
+          "federal": 6320.64,
+          "income": 15300,
+          "netIncome": 6638.27,
+          "state": 2344.15
+        },
+        "dueDate": "2025-04-15",
+        "estimatedDue": 1348.31,
+        "paid": 0,
+        "quarter": 1,
+        "remaining": 1348.31,
+        "status": "overdue"
+      },
+      {
+        "breakdown": {
+          "annualizedIncome": 190780.6,
+          "annualizedTaxableIncome": 158124.48,
+          "expenses": 10557.06,
+          "federal": 6153.85,
+          "income": 15300,
+          "netIncome": 4742.94,
+          "state": 2289.66
+        },
+        "dueDate": "2025-06-16",
+        "estimatedDue": 1149.15,
+        "paid": 0,
+        "quarter": 2,
+        "remaining": 1149.15,
+        "status": "overdue"
+      },
+      {
+        "breakdown": {
+          "annualizedIncome": 189904.47,
+          "annualizedTaxableIncome": 157423.58,
+          "expenses": 10716.49,
+          "federal": 6115.3,
+          "income": 15750,
+          "netIncome": 5033.51,
+          "state": 2277.07
+        },
+        "dueDate": "2025-09-15",
+        "estimatedDue": 1103.13,
+        "paid": 0,
+        "quarter": 3,
+        "remaining": 1103.13,
+        "status": "overdue"
+      },
+      {
+        "breakdown": {
+          "annualizedIncome": 187046.7,
+          "annualizedTaxableIncome": 155137.36,
+          "expenses": 13236.2,
+          "federal": 5989.56,
+          "income": 15850,
+          "netIncome": 2613.8,
+          "state": 2235.99
+        },
+        "dueDate": "2026-01-15",
+        "estimatedDue": 952.98,
+        "paid": 0,
+        "quarter": 4,
+        "remaining": 952.98,
+        "status": "unpaid"
+      }
+    ],
+    "summary": {
+      "totalEstimatedDue": 4553.57,
+      "totalPaid": 0,
+      "totalRemaining": 4553.57
+    }
+  },
+  "fixtureName": "prestwick-rental-2025",
+  "profitLoss": {
+    "expenses": [
+      {
+        "amount": 21600,
+        "code": "5500",
+        "name": "Mortgage Interest"
+      },
+      {
+        "amount": 8876.17,
+        "code": "5300",
+        "name": "Property Taxes"
+      },
+      {
+        "amount": 3300,
+        "code": "5400",
+        "name": "Management Fees"
+      },
+      {
+        "amount": 2585,
+        "code": "5000",
+        "name": "Repairs"
+      },
+      {
+        "amount": 2280,
+        "code": "5200",
+        "name": "Insurance"
+      },
+      {
+        "amount": 1740,
+        "code": "5600",
+        "name": "HOA Fees"
+      },
+      {
+        "amount": 830.31,
+        "code": "5100",
+        "name": "Utilities"
+      },
+      {
+        "amount": 760,
+        "code": "5700",
+        "name": "Landscaping"
+      },
+      {
+        "amount": 520,
+        "code": "5750",
+        "name": "Pest Control"
+      },
+      {
+        "amount": 350,
+        "code": "5900",
+        "name": "Legal & Professional"
+      },
+      {
+        "amount": 210,
+        "code": "5800",
+        "name": "Cleaning & Maintenance"
+      },
+      {
+        "amount": 120,
+        "code": "6000",
+        "name": "Advertising"
+      }
+    ],
+    "revenues": [
+      {
+        "amount": 62100,
+        "code": "4000",
+        "name": "Rent Income"
+      },
+      {
+        "amount": 100,
+        "code": "4100",
+        "name": "Late Fees"
+      }
+    ],
+    "summary": {
+      "netIncome": 19028.52,
+      "totalExpenses": 43171.48,
+      "totalRevenue": 62200
+    }
+  },
+  "rulesVersion": "2026.1",
+  "scheduleE": {
+    "entryCount": 99,
+    "lineAmounts": {
+      "ADVERTISING": 120,
+      "CLEANING_MAINTENANCE": 210,
+      "INSURANCE": 2280,
+      "LEGAL_PROFESSIONAL": 350,
+      "MANAGEMENT_FEES": 3300,
+      "MORTGAGE_INTEREST": 21600,
+      "OTHER": 3020,
+      "RENTS_RECEIVED": 62200,
+      "REPAIRS": 2585,
+      "TAXES": 8876.17,
+      "UTILITIES": 830.31
+    },
+    "summary": {
+      "line20Total": 43171.48,
+      "line21Income": 19028.52,
+      "netIncomeOrLoss": 19028.52,
+      "totalExpenses": 43171.48,
+      "totalIncome": 62200
+    }
+  },
+  "summary": {
+    "entryCount": 99,
+    "propertyCount": 1,
+    "vendorCount": 12
+  },
+  "taxYear": 2025,
+  "trialBalance": {
+    "accounts": [
+      {
+        "balance": 54128.52,
+        "code": "1000",
+        "credits": 0,
+        "debits": 54128.52,
+        "name": "Operating Cash",
+        "type": "ASSET"
+      },
+      {
+        "balance": 5100,
+        "code": "2100",
+        "credits": 5100,
+        "debits": 0,
+        "name": "Security Deposits Liability",
+        "type": "LIABILITY"
+      },
+      {
+        "balance": 30000,
+        "code": "3000",
+        "credits": 30000,
+        "debits": 0,
+        "name": "Owner's Equity",
+        "type": "EQUITY"
+      },
+      {
+        "balance": 62100,
+        "code": "4000",
+        "credits": 62100,
+        "debits": 0,
+        "name": "Rent Income",
+        "type": "REVENUE"
+      },
+      {
+        "balance": 100,
+        "code": "4100",
+        "credits": 100,
+        "debits": 0,
+        "name": "Late Fees",
+        "type": "REVENUE"
+      },
+      {
+        "balance": 2585,
+        "code": "5000",
+        "credits": 0,
+        "debits": 2585,
+        "name": "Repairs",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 830.31,
+        "code": "5100",
+        "credits": 0,
+        "debits": 830.31,
+        "name": "Utilities",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 2280,
+        "code": "5200",
+        "credits": 0,
+        "debits": 2280,
+        "name": "Insurance",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 8876.17,
+        "code": "5300",
+        "credits": 0,
+        "debits": 8876.17,
+        "name": "Property Taxes",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 3300,
+        "code": "5400",
+        "credits": 0,
+        "debits": 3300,
+        "name": "Management Fees",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 21600,
+        "code": "5500",
+        "credits": 0,
+        "debits": 21600,
+        "name": "Mortgage Interest",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 1740,
+        "code": "5600",
+        "credits": 0,
+        "debits": 1740,
+        "name": "HOA Fees",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 760,
+        "code": "5700",
+        "credits": 0,
+        "debits": 760,
+        "name": "Landscaping",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 520,
+        "code": "5750",
+        "credits": 0,
+        "debits": 520,
+        "name": "Pest Control",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 210,
+        "code": "5800",
+        "credits": 0,
+        "debits": 210,
+        "name": "Cleaning & Maintenance",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 350,
+        "code": "5900",
+        "credits": 0,
+        "debits": 350,
+        "name": "Legal & Professional",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 120,
+        "code": "6000",
+        "credits": 0,
+        "debits": 120,
+        "name": "Advertising",
+        "type": "EXPENSE"
+      }
+    ],
+    "isBalanced": true,
+    "totalCredits": 97300,
+    "totalDebits": 97300
+  },
+  "vendors1099": {
+    "formsReady": 2,
+    "formsWithMissingInfo": 0,
+    "threshold1099": 600,
+    "totalAmount": 3345,
+    "totalForms": 2,
+    "vendors": [
+      {
+        "missingInfo": [],
+        "name": "Prosperity Home Mortgage LLC",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 21600
+      },
+      {
+        "missingInfo": [],
+        "name": "Montgomery County Tax Office",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 8876.17
+      },
+      {
+        "missingInfo": [],
+        "name": "Northwind Property Management",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 3300
+      },
+      {
+        "missingInfo": [],
+        "name": "Potomac Home Services",
+        "ready": true,
+        "requires1099": true,
+        "totalPaid": 2585
+      },
+      {
+        "missingInfo": [],
+        "name": "Travelers Insurance",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 2280
+      },
+      {
+        "missingInfo": [],
+        "name": "Fallsreach HOA",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 1740
+      },
+      {
+        "missingInfo": [],
+        "name": "Potomac Green Landscaping LLC",
+        "ready": true,
+        "requires1099": true,
+        "totalPaid": 760
+      },
+      {
+        "missingInfo": [],
+        "name": "Senate Pest Control",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 520
+      },
+      {
+        "missingInfo": [],
+        "name": "Pepco",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 441.48
+      },
+      {
+        "missingInfo": [],
+        "name": "WSSC Water",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 388.83
+      },
+      {
+        "missingInfo": [],
+        "name": "Hillcrest CPA Group",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 350
+      },
+      {
+        "missingInfo": [],
+        "name": "MarketReady Cleaning Co",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 210
+      },
+      {
+        "missingInfo": [],
+        "name": "Zillow Rentals",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 120
+      }
+    ]
+  }
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Check - Room Scanner</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        .version {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .success { background: #d1fae5; color: #065f46; }
+        .error { background: #fee2e2; color: #991b1b; }
+        .info { background: #dbeafe; color: #1e40af; }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+        .details {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+        }
+        .code {
+            background: #f3f4f6;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>📱 Room Scanner Version Check</h1>
+        
+        <div id="status" class="status info">
+            Checking version...
+        </div>
+        
+        <div class="version">
+            Frontend: <span id="frontend-version">Loading...</span>
+        </div>
+        
+        <div class="version">
+            Backend: <span id="backend-version">Loading...</span>
+        </div>
+        
+        <div id="match-status"></div>
+        
+        <button onclick="checkVersion()">🔄 Check Again</button>
+        <button onclick="clearCaches()">🧹 Clear All Caches</button>
+        <button onclick="forceReload()">⚡ Force Reload</button>
+        
+        <div class="details">
+            <strong>What to do if versions don't match:</strong>
+            <ol>
+                <li>Click "Clear All Caches" above</li>
+                <li>Click "Force Reload"</li>
+                <li>If still wrong, go to Settings → Safari → Clear History and Website Data</li>
+            </ol>
+        </div>
+        
+        <div class="code">
+            <strong>Current Time:</strong> <span id="current-time"></span><br>
+            <strong>Cache Status:</strong> <span id="cache-status">Unknown</span><br>
+            <strong>Service Worker:</strong> <span id="sw-status">Unknown</span>
+        </div>
+    </div>
+
+    <script>
+        const EXPECTED_VERSION = 'v2025-12-02_17:10_FORCE_RELOAD';
+        
+        async function checkVersion() {
+            const statusEl = document.getElementById('status');
+            const frontendEl = document.getElementById('frontend-version');
+            const backendEl = document.getElementById('backend-version');
+            const matchEl = document.getElementById('match-status');
+            
+            statusEl.textContent = 'Checking...';
+            statusEl.className = 'status info';
+            
+            try {
+                // Check frontend version (from BUILD_VERSION constant)
+                frontendEl.textContent = EXPECTED_VERSION;
+                
+                // Check backend version
+                const response = await fetch('/api/room-scanner/version', {
+                    cache: 'no-store',
+                    headers: { 'Cache-Control': 'no-cache' }
+                });
+                const data = await response.json();
+                backendEl.textContent = data.version;
+                
+                // Check if they match
+                if (data.version === EXPECTED_VERSION) {
+                    statusEl.textContent = '✅ Version check PASSED! You have the latest version.';
+                    statusEl.className = 'status success';
+                    matchEl.innerHTML = '<div class="status success">🎉 Frontend and backend versions match! Cache is clear.</div>';
+                } else {
+                    statusEl.textContent = '❌ Version mismatch detected!';
+                    statusEl.className = 'status error';
+                    matchEl.innerHTML = '<div class="status error">⚠️ Versions don\'t match. Click "Clear All Caches" then "Force Reload".</div>';
+                }
+                
+            } catch (error) {
+                statusEl.textContent = '❌ Error checking version: ' + error.message;
+                statusEl.className = 'status error';
+            }
+            
+            updateCacheStatus();
+        }
+        
+        async function updateCacheStatus() {
+            document.getElementById('current-time').textContent = new Date().toLocaleString();
+            
+            // Check cache API
+            if ('caches' in window) {
+                const cacheNames = await caches.keys();
+                document.getElementById('cache-status').textContent = 
+                    cacheNames.length > 0 ? `${cacheNames.length} cache(s) found` : 'No caches';
+            }
+            
+            // Check service worker
+            if ('serviceWorker' in navigator) {
+                const registration = await navigator.serviceWorker.getRegistration();
+                document.getElementById('sw-status').textContent = 
+                    registration ? 'Registered' : 'Not registered';
+            }
+        }
+        
+        async function clearCaches() {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = 'Clearing caches...';
+            statusEl.className = 'status info';
+            
+            try {
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                    statusEl.textContent = `✅ Cleared ${cacheNames.length} cache(s)`;
+                    statusEl.className = 'status success';
+                } else {
+                    statusEl.textContent = '⚠️ Cache API not available';
+                    statusEl.className = 'status error';
+                }
+                updateCacheStatus();
+            } catch (error) {
+                statusEl.textContent = '❌ Error clearing caches: ' + error.message;
+                statusEl.className = 'status error';
+            }
+        }
+        
+        function forceReload() {
+            window.location.reload(true);
+        }
+        
+        // Auto-check on load
+        window.addEventListener('load', checkVersion);
+    </script>
+</body>
+</html>

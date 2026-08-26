@@ -1,0 +1,222 @@
+{
+  "fixtureName": "bookkeeping-shadow-paths",
+  "bankTransactionCases": [
+    {
+      "label": "plaid-expense-builds-balanced-posted-journal-payload",
+      "categoryAccountName": "Repairs",
+      "txn": {
+        "bankTxnId": "plaid-txn-001",
+        "date": "2026-04-25",
+        "amount": -142.18,
+        "description": "Home Depot purchase",
+        "payee": "Home Depot",
+        "isDebit": true,
+        "propertyId": "prop-1",
+        "categoryCode": "5000",
+        "source": "PLAID"
+      }
+    }
+  ],
+  "journalEntryCases": [
+    {
+      "label": "manual-receipt-expense-falls-back-to-firestore-id",
+      "userId": "fixture-user",
+      "journalEntryId": "receipt-entry-1",
+      "entry": {
+        "entryDate": "2026-04-24",
+        "createdAt": "2026-04-24T12:00:00.000Z",
+        "memo": "Receipt expense",
+        "source": "RECEIPT",
+        "sourceRef": "https://example.com/receipts/12345.png",
+        "category": "Repairs",
+        "scheduleELine": 14,
+        "vendor": "ACME Plumbing",
+        "hasReceipt": true,
+        "lines": [
+          {
+            "accountCode": "5000",
+            "accountName": "Repairs",
+            "amount": 125.25,
+            "dc": "D",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 125.25,
+            "dc": "C",
+            "propertyId": "prop-1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "qbo-import-uses-stable-source-ref",
+      "userId": "fixture-user",
+      "journalEntryId": "firestore-qbo-1",
+      "entry": {
+        "entryDate": "2026-04-24",
+        "createdAt": "2026-04-24T12:05:00.000Z",
+        "memo": "Imported rent",
+        "source": "QBO_IMPORT",
+        "sourceRef": "qbo-123",
+        "category": "Rent Income",
+        "scheduleELine": 3,
+        "lines": [
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 1500,
+            "dc": "D",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "4000",
+            "accountName": "Rent Income",
+            "amount": 1500,
+            "dc": "C",
+            "propertyId": "prop-1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "sample-feed-uses-stable-source-ref",
+      "userId": "fixture-user",
+      "journalEntryId": "firestore-sample-1",
+      "entry": {
+        "entryDate": "2026-04-24",
+        "createdAt": "2026-04-24T12:10:00.000Z",
+        "memo": "Hardware store",
+        "source": "SAMPLE_FEED",
+        "sourceRef": "sample-feed-77",
+        "category": "Repairs",
+        "scheduleELine": 14,
+        "payee": "ACE Hardware",
+        "counterpartyName": "ACE Hardware",
+        "vendor": "ACE Hardware",
+        "isExpense": true,
+        "lines": [
+          {
+            "accountCode": "5000",
+            "accountName": "Repairs",
+            "amount": 87.4,
+            "dc": "D",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 87.4,
+            "dc": "C",
+            "propertyId": "prop-1"
+          }
+        ]
+      }
+    }
+  ],
+  "reclassificationCases": [
+    {
+      "label": "expense-account-reclassification-becomes-adjustment-entry",
+      "userId": "fixture-user",
+      "entryId": "entry-expense-reclass",
+      "previousEntry": {
+        "entryDate": "2026-04-24",
+        "category": "Repairs",
+        "scheduleELine": 14,
+        "isExpense": true,
+        "lines": [
+          {
+            "accountCode": "5000",
+            "accountName": "Repairs",
+            "amount": 200,
+            "dc": "D",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 200,
+            "dc": "C",
+            "propertyId": "prop-1"
+          }
+        ]
+      },
+      "nextEntry": {
+        "entryDate": "2026-04-24",
+        "category": "Utilities",
+        "scheduleELine": 17,
+        "isExpense": true,
+        "reclassifiedAt": "2026-04-24T16:30:00.000Z",
+        "reclassifiedBy": "reviewer@example.com",
+        "lines": [
+          {
+            "accountCode": "5100",
+            "accountName": "Utilities",
+            "amount": 200,
+            "dc": "D",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 200,
+            "dc": "C",
+            "propertyId": "prop-1"
+          }
+        ]
+      }
+    },
+    {
+      "label": "metadata-only-reclassification-stages-review",
+      "userId": "fixture-user",
+      "entryId": "entry-metadata-review",
+      "previousEntry": {
+        "entryDate": "2026-04-24",
+        "category": "Other Expenses",
+        "scheduleELine": 19,
+        "isExpense": true,
+        "lines": [
+          {
+            "accountCode": "5999",
+            "accountName": "Other Expenses",
+            "amount": 75,
+            "dc": "D",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 75,
+            "dc": "C",
+            "propertyId": "prop-1"
+          }
+        ]
+      },
+      "nextEntry": {
+        "entryDate": "2026-04-24",
+        "category": "Bank Fees",
+        "scheduleELine": 13,
+        "isExpense": true,
+        "reclassifiedAt": "2026-04-24T16:31:00.000Z",
+        "reclassifiedBy": "reviewer@example.com",
+        "lines": [
+          {
+            "accountCode": "5999",
+            "accountName": "Other Expenses",
+            "amount": 75,
+            "dc": "D",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 75,
+            "dc": "C",
+            "propertyId": "prop-1"
+          }
+        ]
+      }
+    }
+  ]
+}

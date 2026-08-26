@@ -1,0 +1,58 @@
+{
+  "fixtureName": "stripe-shadow-paths",
+  "balanceCases": [
+    {
+      "label": "balance-charge-posts-income",
+      "transaction": {
+        "id": "txn_balance_charge_1",
+        "type": "charge",
+        "amount": 125000,
+        "net": 121375,
+        "fee": 3625,
+        "created": 1714000000,
+        "description": "April rent payment",
+        "reporting_category": "charge"
+      },
+      "context": {
+        "userId": "fixture-user",
+        "propertyId": "fixture-property"
+      }
+    }
+  ],
+  "financialConnectionsCases": [
+    {
+      "label": "transfer-category-stages-cash-movement-review",
+      "transaction": {
+        "id": "txn_fc_transfer_internal_1",
+        "amount": -250000,
+        "transacted_at": 1714000000,
+        "description": "Internal transfer to reserve account",
+        "merchant_name": "HouseYield Reserve",
+        "category": "transfer.internal"
+      },
+      "context": {
+        "userId": "fixture-user",
+        "propertyId": "fixture-property",
+        "accountCode": null,
+        "classification": null
+      }
+    },
+    {
+      "label": "transfer-category-stages-stripe-settlement-match",
+      "transaction": {
+        "id": "txn_fc_transfer_stripe_1",
+        "amount": 250000,
+        "transacted_at": 1714003600,
+        "description": "Stripe payout transfer",
+        "merchant_name": "Stripe",
+        "category": "transfer"
+      },
+      "context": {
+        "userId": "fixture-user",
+        "propertyId": "fixture-property",
+        "accountCode": null,
+        "classification": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,1887 @@
+{
+  "fixtureName": "prestwick-rental-2025",
+  "userId": "fixture-user",
+  "generatedAt": "2026-06-23T01:40:08.578Z",
+  "cleanup": {
+    "ok": true,
+    "status": "cleaned",
+    "steps": [
+      {
+        "label": "evidence_links",
+        "affectedRows": 0
+      },
+      {
+        "label": "finance_evidence",
+        "affectedRows": 0
+      },
+      {
+        "label": "workpaper_snapshots",
+        "affectedRows": 0
+      },
+      {
+        "label": "close_periods",
+        "affectedRows": 0
+      },
+      {
+        "label": "estimated_tax_payments",
+        "affectedRows": 0
+      },
+      {
+        "label": "reconciliation_items",
+        "affectedRows": 0
+      },
+      {
+        "label": "reconciliation_sessions",
+        "affectedRows": 0
+      },
+      {
+        "label": "subledger_tenant",
+        "affectedRows": 0
+      },
+      {
+        "label": "subledger_vendor",
+        "affectedRows": 0
+      },
+      {
+        "label": "subledger_security_deposit",
+        "affectedRows": 0
+      },
+      {
+        "label": "subledger_owner_equity",
+        "affectedRows": 0
+      },
+      {
+        "label": "journal_lines",
+        "affectedRows": 18
+      },
+      {
+        "label": "idempotency_keys",
+        "affectedRows": 9
+      },
+      {
+        "label": "journal_entries",
+        "affectedRows": 9
+      },
+      {
+        "label": "finance_events",
+        "affectedRows": 9
+      },
+      {
+        "label": "source_events",
+        "affectedRows": 9
+      },
+      {
+        "label": "bookkeeping_vendors",
+        "affectedRows": 3
+      },
+      {
+        "label": "bookkeeping_properties",
+        "affectedRows": 1
+      },
+      {
+        "label": "bookkeeping_accounts",
+        "affectedRows": 32
+      }
+    ]
+  },
+  "metadataSeed": {
+    "accountCount": 18,
+    "propertyCount": 1,
+    "vendorCount": 12
+  },
+  "entrySeed": {
+    "entryCount": 99,
+    "postedCount": 99,
+    "duplicateCount": 0,
+    "statuses": [
+      {
+        "legacyId": "opening-balance",
+        "status": "posted",
+        "journalEntryId": "03399A3E-7CBC-4DCB-9968-36E20DB89B0B",
+        "financeEventId": "20304005-DEE5-4412-847E-8E78AA376A3B"
+      },
+      {
+        "legacyId": "security-deposit",
+        "status": "posted",
+        "journalEntryId": "1E85FB55-1FF8-45F1-9A44-E4981F0213F1",
+        "financeEventId": "693CC3AD-AE7B-4ED3-9608-40F3528CBDAC"
+      },
+      {
+        "legacyId": "rent-1",
+        "status": "posted",
+        "journalEntryId": "24C835F3-3419-4F9E-B512-A7F98C85EE2E",
+        "financeEventId": "27BA2469-3E78-4EBA-A342-3EE563AF97BA"
+      },
+      {
+        "legacyId": "rent-2",
+        "status": "posted",
+        "journalEntryId": "DF06FC8B-F9CE-4F08-9625-1ED2DD40D4CC",
+        "financeEventId": "D30CE544-235D-4BD3-82A1-56674BD1B75B"
+      },
+      {
+        "legacyId": "rent-3",
+        "status": "posted",
+        "journalEntryId": "F73D2855-7E56-4368-8EE7-DB6EECF7B453",
+        "financeEventId": "32467CC3-6E29-43E9-B4AD-65BC5E6B3AA5"
+      },
+      {
+        "legacyId": "rent-4",
+        "status": "posted",
+        "journalEntryId": "B616B2A2-7164-49A2-A493-79361A810A47",
+        "financeEventId": "B8A271A8-CFE9-425A-A107-3AC3C03CD48A"
+      },
+      {
+        "legacyId": "rent-5",
+        "status": "posted",
+        "journalEntryId": "B4ABB529-70EF-4C95-8BF9-84C1B8724B03",
+        "financeEventId": "65D9E3E5-FAB5-45F7-901B-0D2C2201B87A"
+      },
+      {
+        "legacyId": "rent-6",
+        "status": "posted",
+        "journalEntryId": "5E392426-502D-42C3-860C-A858C8EB4C1C",
+        "financeEventId": "000522F6-99A1-4C25-9AF9-499195E72A3D"
+      },
+      {
+        "legacyId": "rent-7",
+        "status": "posted",
+        "journalEntryId": "DCB7EAD6-8273-4409-BD50-E1F9269BAF49",
+        "financeEventId": "301C0D01-31E1-448A-BCD2-0BD7C7652651"
+      },
+      {
+        "legacyId": "rent-8",
+        "status": "posted",
+        "journalEntryId": "5FD4C5CC-C72C-42DE-AD22-A0E47561289A",
+        "financeEventId": "6BE58425-F114-4396-89D0-5C17CB64BDB2"
+      },
+      {
+        "legacyId": "rent-9",
+        "status": "posted",
+        "journalEntryId": "B8EE4910-90B2-4B62-A493-48EE6A847F2C",
+        "financeEventId": "D33B8319-9C5A-4E82-A44A-986C2B676FAE"
+      },
+      {
+        "legacyId": "rent-10",
+        "status": "posted",
+        "journalEntryId": "7E1C1AE7-3A38-4535-9D94-8CA7679A44AB",
+        "financeEventId": "22506E40-255E-41DB-90E9-6DB9036D1F08"
+      },
+      {
+        "legacyId": "rent-11",
+        "status": "posted",
+        "journalEntryId": "685C7228-3419-4EF5-9855-2B71F077E2AE",
+        "financeEventId": "7CA6FD0E-07AC-4DEF-8676-A4E78C4791DC"
+      },
+      {
+        "legacyId": "rent-12",
+        "status": "posted",
+        "journalEntryId": "D623AAE7-583A-4F19-BC1B-54874F073DE9",
+        "financeEventId": "8DBAC0B7-C59F-420C-B2F0-BDFC1FF2F9CC"
+      },
+      {
+        "legacyId": "late-fee-november",
+        "status": "posted",
+        "journalEntryId": "D5D5FFBF-A09E-4D4D-9EEB-36DA8C1791FC",
+        "financeEventId": "BBE6DE79-08C9-4AE4-AD2A-404C2F10AE38"
+      },
+      {
+        "legacyId": "mortgage-interest-1",
+        "status": "posted",
+        "journalEntryId": "96A47EE0-BE6F-48EF-9C9D-0071702FDC0D",
+        "financeEventId": "9E419133-A2BC-4DF8-A5FD-80D392BF158D"
+      },
+      {
+        "legacyId": "management-fee-1",
+        "status": "posted",
+        "journalEntryId": "BD637A8F-7567-4299-AFDE-BC6915168614",
+        "financeEventId": "1374F815-A021-4EA6-BAE8-0A4AAA6006B8"
+      },
+      {
+        "legacyId": "insurance-1",
+        "status": "posted",
+        "journalEntryId": "6FE8AE0A-34C3-441F-815F-052AE93777FB",
+        "financeEventId": "D5AEFBBC-2B0A-4B38-807F-7327B96450A8"
+      },
+      {
+        "legacyId": "hoa-1",
+        "status": "posted",
+        "journalEntryId": "B3CD8DBA-759A-4620-89AD-95FF42C4139B",
+        "financeEventId": "1D656886-FB72-4D0D-8183-95E0F6AC146B"
+      },
+      {
+        "legacyId": "mortgage-interest-2",
+        "status": "posted",
+        "journalEntryId": "533B3BCB-40F9-4094-8238-8C262ACE3169",
+        "financeEventId": "81CCC1B7-C41D-4760-A78D-877755F39F20"
+      },
+      {
+        "legacyId": "management-fee-2",
+        "status": "posted",
+        "journalEntryId": "09FEEDE7-13AF-4538-A22B-47CFEF5C327E",
+        "financeEventId": "2B0C4158-1CED-47B9-BDF6-042A6F586360"
+      },
+      {
+        "legacyId": "insurance-2",
+        "status": "posted",
+        "journalEntryId": "3C8FEA6D-523C-44F0-AE3E-61D40E3BFAEF",
+        "financeEventId": "24C23C8E-BD71-40D8-B8C8-AC3DCD6B8102"
+      },
+      {
+        "legacyId": "hoa-2",
+        "status": "posted",
+        "journalEntryId": "C632B1D8-8059-4C61-B34D-B4942AB5218B",
+        "financeEventId": "F845888F-9BC9-4210-8DC5-EAD8F3E9618B"
+      },
+      {
+        "legacyId": "mortgage-interest-3",
+        "status": "posted",
+        "journalEntryId": "7B35646E-BA41-479B-A9DF-14FB0642F74A",
+        "financeEventId": "65FC6664-1823-45B9-B4C0-A99E7F91595B"
+      },
+      {
+        "legacyId": "management-fee-3",
+        "status": "posted",
+        "journalEntryId": "B596A8F5-27AB-48B4-B032-1B797EEC8674",
+        "financeEventId": "9403680C-0B39-4402-AB86-1904B70F2CD6"
+      },
+      {
+        "legacyId": "insurance-3",
+        "status": "posted",
+        "journalEntryId": "BBE00CFE-796C-49BE-B2CB-930D94D9361A",
+        "financeEventId": "FBB69D38-AEF7-43EA-A26B-61A4A1085C03"
+      },
+      {
+        "legacyId": "hoa-3",
+        "status": "posted",
+        "journalEntryId": "5E3C9D67-0CD8-49E4-92E8-DE20C18013A4",
+        "financeEventId": "6F1E2507-E8CF-41C2-AB08-B6A26B65A6C0"
+      },
+      {
+        "legacyId": "mortgage-interest-4",
+        "status": "posted",
+        "journalEntryId": "5231C48F-FD8E-4F57-8909-37D48C84FFE9",
+        "financeEventId": "120207D4-24B3-402A-BB54-6C0DA34B3A29"
+      },
+      {
+        "legacyId": "management-fee-4",
+        "status": "posted",
+        "journalEntryId": "2C16FD46-A1E8-4957-881B-BF99F9997667",
+        "financeEventId": "89875F97-1F3D-425B-8D5E-A602063B3C70"
+      },
+      {
+        "legacyId": "insurance-4",
+        "status": "posted",
+        "journalEntryId": "AF9809B8-7FFF-42C0-81EA-CE1D277792E4",
+        "financeEventId": "45500426-D537-43FE-BB53-463D67EED407"
+      },
+      {
+        "legacyId": "hoa-4",
+        "status": "posted",
+        "journalEntryId": "18966F23-3FC8-4B81-BEE0-BB5914E38F86",
+        "financeEventId": "941CB167-3F1D-4E6A-ADB1-1E0B8B29B839"
+      },
+      {
+        "legacyId": "mortgage-interest-5",
+        "status": "posted",
+        "journalEntryId": "30C0B9A4-D0E4-4468-BC5D-C96CF6041862",
+        "financeEventId": "8D831973-261B-4012-9948-7C048993FE0E"
+      },
+      {
+        "legacyId": "management-fee-5",
+        "status": "posted",
+        "journalEntryId": "C79CD62C-5196-486C-8CB4-3E7DD5F9EB97",
+        "financeEventId": "7F6DA801-24F3-4374-85A8-9AE8145561C9"
+      },
+      {
+        "legacyId": "insurance-5",
+        "status": "posted",
+        "journalEntryId": "D1FCB6EE-AB94-4998-9A07-C7F849902D06",
+        "financeEventId": "C76E9553-5314-48F7-AF08-648261AB9DAD"
+      },
+      {
+        "legacyId": "hoa-5",
+        "status": "posted",
+        "journalEntryId": "95E7C537-7DAF-426A-815C-3BAD6BFC0AE0",
+        "financeEventId": "B24C7F49-B90A-4C1A-9AC0-119A03FEDADB"
+      },
+      {
+        "legacyId": "mortgage-interest-6",
+        "status": "posted",
+        "journalEntryId": "8F3EFA5F-58B4-4398-9DB4-78298A813B5C",
+        "financeEventId": "FDABE103-5881-47FA-8D26-6CFE4BDD9D10"
+      },
+      {
+        "legacyId": "management-fee-6",
+        "status": "posted",
+        "journalEntryId": "36588010-82CA-4B21-AEB5-94674BE1B672",
+        "financeEventId": "9044AABB-12F6-46A7-8D98-FA387CE20133"
+      },
+      {
+        "legacyId": "insurance-6",
+        "status": "posted",
+        "journalEntryId": "55D571D1-BE68-405F-A3FC-62FDBFEF91CD",
+        "financeEventId": "A514A1F3-9D3D-499A-A43C-A134D4180AE8"
+      },
+      {
+        "legacyId": "hoa-6",
+        "status": "posted",
+        "journalEntryId": "52F0CD0C-600C-4F31-A7F2-68890859DEEA",
+        "financeEventId": "7EEA1471-728C-4B6C-9486-DEFDFDCDD404"
+      },
+      {
+        "legacyId": "mortgage-interest-7",
+        "status": "posted",
+        "journalEntryId": "A6F22027-5D7C-4751-AB86-82E767C4C062",
+        "financeEventId": "9A37BFB9-BD31-4169-BBDF-A139F7357706"
+      },
+      {
+        "legacyId": "management-fee-7",
+        "status": "posted",
+        "journalEntryId": "FBE3FD6F-E2FD-446F-A9B4-36AB572749DE",
+        "financeEventId": "654EE9E7-F030-4487-AC3C-733DFF74376C"
+      },
+      {
+        "legacyId": "insurance-7",
+        "status": "posted",
+        "journalEntryId": "4D727F9B-6FF2-40D1-9C04-82CABF76D35C",
+        "financeEventId": "7147513B-7C33-4AB1-958B-C0436472929C"
+      },
+      {
+        "legacyId": "hoa-7",
+        "status": "posted",
+        "journalEntryId": "BD9FBD0C-C2FB-492C-8043-567DD3E001AD",
+        "financeEventId": "086CB2C5-9D6E-4318-95FA-7F19B5744EAF"
+      },
+      {
+        "legacyId": "mortgage-interest-8",
+        "status": "posted",
+        "journalEntryId": "0DBAE248-2AB9-4808-86CC-73ABB1627489",
+        "financeEventId": "F67B2D68-FBF3-4B28-9242-D44D05EBCBAE"
+      },
+      {
+        "legacyId": "management-fee-8",
+        "status": "posted",
+        "journalEntryId": "E60BDBB4-5AD4-4F61-B8C3-D15BA9DE09BB",
+        "financeEventId": "E7C55172-2155-44F2-8343-61B768FA5C8A"
+      },
+      {
+        "legacyId": "insurance-8",
+        "status": "posted",
+        "journalEntryId": "B9328FF7-471B-4891-B157-FEBFC04F69F3",
+        "financeEventId": "3B742F5F-41ED-43BB-9AE3-F3C57B8670A8"
+      },
+      {
+        "legacyId": "hoa-8",
+        "status": "posted",
+        "journalEntryId": "2FB8594A-E8CF-49DF-8AEC-923D7B8F273B",
+        "financeEventId": "D055F1D9-8526-4FAF-B11C-962FFA818320"
+      },
+      {
+        "legacyId": "mortgage-interest-9",
+        "status": "posted",
+        "journalEntryId": "F9AB9069-2536-4563-889C-700838F55CCD",
+        "financeEventId": "ABB2FE6F-B80F-4D98-986C-004A07D137D2"
+      },
+      {
+        "legacyId": "management-fee-9",
+        "status": "posted",
+        "journalEntryId": "E1B0D9CB-F6DF-41FE-92AF-E0A6303B47AA",
+        "financeEventId": "BEDEF66B-7C10-4746-80E3-AD756C09B23C"
+      },
+      {
+        "legacyId": "insurance-9",
+        "status": "posted",
+        "journalEntryId": "6DACFAA9-BB88-4E17-A03A-49E2C88288F0",
+        "financeEventId": "00878FBD-133C-4FAB-A588-7E807E3BD1E7"
+      },
+      {
+        "legacyId": "hoa-9",
+        "status": "posted",
+        "journalEntryId": "276E9926-5C98-46F8-80FB-76C310C13D8D",
+        "financeEventId": "F0BEE159-5DEB-4E79-9B3B-4DE3C66C690D"
+      },
+      {
+        "legacyId": "mortgage-interest-10",
+        "status": "posted",
+        "journalEntryId": "3D305B83-3D29-4E14-A6FF-3B49EE113AF5",
+        "financeEventId": "8E3ECE39-7DD4-4C63-BB1C-244A550DE4CC"
+      },
+      {
+        "legacyId": "management-fee-10",
+        "status": "posted",
+        "journalEntryId": "71CCD3EC-3C02-41D1-9073-E71B1BE60C7E",
+        "financeEventId": "C6EEA0E8-F7C6-4C0C-8812-04B7668CC762"
+      },
+      {
+        "legacyId": "insurance-10",
+        "status": "posted",
+        "journalEntryId": "07B85A7B-26F8-41D5-B095-8542581EB396",
+        "financeEventId": "05673CD7-98F0-4DC9-BCFD-FAF2ECDFF7CE"
+      },
+      {
+        "legacyId": "hoa-10",
+        "status": "posted",
+        "journalEntryId": "D7B867FF-1891-4338-A2F9-442859EEAD6F",
+        "financeEventId": "CC15085E-5BA2-4400-8CA8-2C3C217FE1B1"
+      },
+      {
+        "legacyId": "mortgage-interest-11",
+        "status": "posted",
+        "journalEntryId": "CCFA6431-FE03-4170-8514-FC62EB7458D6",
+        "financeEventId": "800B02F0-D631-4B48-88F8-8FB40E66381A"
+      },
+      {
+        "legacyId": "management-fee-11",
+        "status": "posted",
+        "journalEntryId": "4CA5E04B-7D86-4BB1-A866-92473FAC6AF4",
+        "financeEventId": "93DAF0E9-699C-4171-AA92-64B5A6861577"
+      },
+      {
+        "legacyId": "insurance-11",
+        "status": "posted",
+        "journalEntryId": "B3CD0398-DC77-42EE-95E1-BCE9E7146640",
+        "financeEventId": "7977C83A-3C1C-4E69-9887-7E6336EA3470"
+      },
+      {
+        "legacyId": "hoa-11",
+        "status": "posted",
+        "journalEntryId": "075955F8-7360-404D-A09A-79E051D2B283",
+        "financeEventId": "F3022E9A-664E-43A4-A15E-C67D1EC28330"
+      },
+      {
+        "legacyId": "mortgage-interest-12",
+        "status": "posted",
+        "journalEntryId": "71AFBB1C-56A3-45FF-BC1F-DDD00C4C3BE9",
+        "financeEventId": "D97B91FD-B620-48D6-B66E-F35CE9A59E9B"
+      },
+      {
+        "legacyId": "management-fee-12",
+        "status": "posted",
+        "journalEntryId": "16907531-7335-4C23-923B-395D437DDEA8",
+        "financeEventId": "163A4112-2AE0-425E-9412-727A91D96BB5"
+      },
+      {
+        "legacyId": "insurance-12",
+        "status": "posted",
+        "journalEntryId": "FABFCC43-1700-4DAD-BB1F-2539621CE775",
+        "financeEventId": "D0A2EA7B-9F1B-418F-9AE4-01DC792B15C1"
+      },
+      {
+        "legacyId": "hoa-12",
+        "status": "posted",
+        "journalEntryId": "00D640E7-1DAF-46FD-99C8-C6DF96AEE900",
+        "financeEventId": "0202D285-36F6-45A0-8B53-AD24957CA85D"
+      },
+      {
+        "legacyId": "utilities-1",
+        "status": "posted",
+        "journalEntryId": "244B1BCB-2352-4F57-85B7-EA3351B60256",
+        "financeEventId": "E3367433-0A81-477F-9EF9-EE44A8364AEC"
+      },
+      {
+        "legacyId": "utilities-2",
+        "status": "posted",
+        "journalEntryId": "AAE423FF-0D86-484F-BA1A-C2F4DF4F4EE1",
+        "financeEventId": "6B38271C-2897-424D-AD8C-A386DF340FA6"
+      },
+      {
+        "legacyId": "utilities-3",
+        "status": "posted",
+        "journalEntryId": "BD624E0D-001D-4F0E-B361-CE199B8CA180",
+        "financeEventId": "8B938AD0-80DA-497C-B4B4-F64B71038D42"
+      },
+      {
+        "legacyId": "utilities-4",
+        "status": "posted",
+        "journalEntryId": "6D3BE269-0044-4DDF-B1D3-5748C068950F",
+        "financeEventId": "C9E9CAD9-CE89-43A7-8FFE-2DF563A26B39"
+      },
+      {
+        "legacyId": "utilities-5",
+        "status": "posted",
+        "journalEntryId": "2EDF3057-23E9-434B-8AA4-D3B41FE258C3",
+        "financeEventId": "9715AB4E-402C-4658-B9EB-E5F1737A91C7"
+      },
+      {
+        "legacyId": "utilities-6",
+        "status": "posted",
+        "journalEntryId": "AF6EF0D4-D720-4FAB-826A-1D4C8E5DCC65",
+        "financeEventId": "8C4526E1-F961-481D-AE3C-02F191A539F1"
+      },
+      {
+        "legacyId": "utilities-7",
+        "status": "posted",
+        "journalEntryId": "FDADB63F-52BF-4D45-A122-8F125927323C",
+        "financeEventId": "A2B5A490-6F66-445C-BBC2-6C44F1C2CC1A"
+      },
+      {
+        "legacyId": "utilities-8",
+        "status": "posted",
+        "journalEntryId": "BD053EA0-772E-48C5-9365-D8C69ED1CC15",
+        "financeEventId": "B6C265D5-267C-4464-821F-01E9A636552D"
+      },
+      {
+        "legacyId": "utilities-9",
+        "status": "posted",
+        "journalEntryId": "174152EF-CE14-45A3-A839-6E0FC9F74A01",
+        "financeEventId": "095CB37C-9BB6-4941-9D60-E085C983F6D3"
+      },
+      {
+        "legacyId": "utilities-10",
+        "status": "posted",
+        "journalEntryId": "ADF5A92E-91B3-4A43-869B-39A020939BD9",
+        "financeEventId": "49A68D62-A48E-4D1F-B686-DFD12BE01790"
+      },
+      {
+        "legacyId": "utilities-11",
+        "status": "posted",
+        "journalEntryId": "7498A87B-3A4B-4F4C-AD8B-857DA2711CAB",
+        "financeEventId": "3DF08D0C-4003-4391-9829-E176A8CBAFB5"
+      },
+      {
+        "legacyId": "utilities-12",
+        "status": "posted",
+        "journalEntryId": "7BD8A7E2-E3EF-4932-B585-0268F9BD31D9",
+        "financeEventId": "5F9D4076-3F1E-4D9B-8F69-0D99DEE0E05D"
+      },
+      {
+        "legacyId": "property-tax-1",
+        "status": "posted",
+        "journalEntryId": "D0D3CB66-14F4-490E-ACBF-ADC15484696D",
+        "financeEventId": "A9D6457B-C723-48D2-9B46-F519CAEDCBA3"
+      },
+      {
+        "legacyId": "property-tax-2",
+        "status": "posted",
+        "journalEntryId": "811E1A11-2AFC-45F3-9033-B4D75C91991C",
+        "financeEventId": "EEFFCD89-0A9A-440C-B476-4B285FEE1884"
+      },
+      {
+        "legacyId": "property-tax-3",
+        "status": "posted",
+        "journalEntryId": "B153DC83-DB7E-48E1-82DB-32CF1334388C",
+        "financeEventId": "5E8EBF1D-CA63-4280-B89F-7A2B1BA55691"
+      },
+      {
+        "legacyId": "property-tax-4",
+        "status": "posted",
+        "journalEntryId": "958327FB-18AF-4D0E-AC57-5C2AB8E1AE6E",
+        "financeEventId": "BBFC5223-DD24-4566-8E6E-EB1E6B16E7CC"
+      },
+      {
+        "legacyId": "landscaping-1",
+        "status": "posted",
+        "journalEntryId": "88AC2BBF-FD3C-432E-A297-1982AE3984EA",
+        "financeEventId": "41DDF75B-9159-4049-B7E8-294D38BBA3F1"
+      },
+      {
+        "legacyId": "landscaping-2",
+        "status": "posted",
+        "journalEntryId": "4616CDBC-EE98-4137-A7BD-96DE84765B34",
+        "financeEventId": "70221A04-0332-40F6-B4CF-60BF51942DA4"
+      },
+      {
+        "legacyId": "landscaping-3",
+        "status": "posted",
+        "journalEntryId": "C231E6C0-5A1D-4EF7-A388-79CA4D8D0221",
+        "financeEventId": "0214010A-FBEC-4385-815A-1714E3DC6C17"
+      },
+      {
+        "legacyId": "landscaping-4",
+        "status": "posted",
+        "journalEntryId": "5E18FB85-2BE3-4CCD-B1D2-14191DC0719F",
+        "financeEventId": "D8BBAA47-6031-4D03-91A9-A59B8403FDE2"
+      },
+      {
+        "legacyId": "landscaping-5",
+        "status": "posted",
+        "journalEntryId": "56F4E253-FE21-43C8-9B51-6AE1C6818EA9",
+        "financeEventId": "9528B99B-02D6-4B91-9D5F-8228BA31227C"
+      },
+      {
+        "legacyId": "landscaping-6",
+        "status": "posted",
+        "journalEntryId": "4E2601AA-E71A-4A39-AAAF-74A14AFDC9CE",
+        "financeEventId": "F1519EF2-933B-42AE-B1F7-9D23E29884A2"
+      },
+      {
+        "legacyId": "landscaping-7",
+        "status": "posted",
+        "journalEntryId": "5E28BD6B-65E4-4BDE-AC3A-35C2E3A8E841",
+        "financeEventId": "62886DA4-497C-44AB-AAD5-2BE8BED412DD"
+      },
+      {
+        "legacyId": "landscaping-8",
+        "status": "posted",
+        "journalEntryId": "2E2E9664-D227-4BB4-B2C0-23C73117CB80",
+        "financeEventId": "1F55D053-8338-489C-962D-2820888AA461"
+      },
+      {
+        "legacyId": "pest-control-1",
+        "status": "posted",
+        "journalEntryId": "F84E0FFE-9D7D-4D15-B21C-9B8BA6457365",
+        "financeEventId": "446A684C-5F5A-4417-A844-3FC0CD7410A6"
+      },
+      {
+        "legacyId": "pest-control-2",
+        "status": "posted",
+        "journalEntryId": "38E875CE-16C6-4B15-A00F-4A0B3E327961",
+        "financeEventId": "846C130F-BC00-4465-9398-34EDFCCD20E7"
+      },
+      {
+        "legacyId": "pest-control-3",
+        "status": "posted",
+        "journalEntryId": "66932A8F-8064-4E4B-AF3F-C9ED196D9372",
+        "financeEventId": "802710B6-6AA8-4DD6-9AAC-E73E4EC606A3"
+      },
+      {
+        "legacyId": "pest-control-4",
+        "status": "posted",
+        "journalEntryId": "B125CEA7-E547-4B33-9A7D-97A43E4A2785",
+        "financeEventId": "73A38A7F-96B4-422B-8CD4-37560AC6390A"
+      },
+      {
+        "legacyId": "repair-1",
+        "status": "posted",
+        "journalEntryId": "E603D8EE-C68B-4E4D-AD05-25F8BBC318BA",
+        "financeEventId": "9ACBD668-0343-46C8-9D0A-5830A98836EE"
+      },
+      {
+        "legacyId": "repair-2",
+        "status": "posted",
+        "journalEntryId": "DB348D2D-6CC6-4AD1-B563-10CE199A2387",
+        "financeEventId": "7A7F8139-4467-4FC6-B563-814D0DC31D1A"
+      },
+      {
+        "legacyId": "repair-3",
+        "status": "posted",
+        "journalEntryId": "77C3637B-E639-49A7-830D-E35120917188",
+        "financeEventId": "58043BF0-246A-4F6F-8737-FB3923A7938F"
+      },
+      {
+        "legacyId": "repair-4",
+        "status": "posted",
+        "journalEntryId": "64CDCD60-5EF5-4D54-8551-18678163B519",
+        "financeEventId": "05324DEE-8914-4C8D-BB03-146037BEE754"
+      },
+      {
+        "legacyId": "repair-5",
+        "status": "posted",
+        "journalEntryId": "465ECF34-DC71-4580-B64B-A49FA26BED5E",
+        "financeEventId": "B4BBFAFC-9AB7-4BDD-AA3C-E8ACBDB82F3E"
+      },
+      {
+        "legacyId": "cleaning-annual",
+        "status": "posted",
+        "journalEntryId": "91B7DF4D-7045-4F19-AC32-94A759CA9BE6",
+        "financeEventId": "528BC745-C5F7-4CFA-9212-BAF5604F5A84"
+      },
+      {
+        "legacyId": "legal-cpa-review",
+        "status": "posted",
+        "journalEntryId": "C78AD898-739E-4D28-86AF-AFDE89A8DD90",
+        "financeEventId": "C5513CF3-65DC-43FE-AE86-48E3EA6A90EB"
+      },
+      {
+        "legacyId": "advertising-renewal",
+        "status": "posted",
+        "journalEntryId": "BF89B172-9D27-4D37-9228-3F57BB43CB8A",
+        "financeEventId": "F3E76A20-199A-473B-82BC-5E082863E65F"
+      }
+    ]
+  },
+  "estimatedTaxPaymentSeed": {
+    "paymentCount": 0,
+    "readyCount": 0,
+    "payments": []
+  },
+  "runtimeRules": {
+    "ok": true,
+    "status": "loaded",
+    "source": "azure_sql",
+    "bootstrapStatus": null,
+    "approvedBy": "system-year-rules-correction",
+    "approvalStatus": "approved",
+    "rulesVersion": "2025.1"
+  },
+  "storedExpectedSnapshotMatched": false,
+  "storedExpectedDifference": "root.estimatedTaxes.assumptions: expected keys filingStatus, homeState, otherDeductions, otherIncome, taxCredits, withholdingYtd, received filingStatus, homeState, otherDeductions, otherIncome, priorYearAdjustedGrossIncome, priorYearTotalTax, rentalServiceHours, taxCredits, withholdingYtd",
+  "cutoverPassed": false,
+  "cutoverDifference": null,
+  "legacySnapshot": {
+    "cashflowTrend": [
+      {
+        "entryCount": 8,
+        "expenses": 2804.12,
+        "income": 5100,
+        "month": "January",
+        "net": 2295.88,
+        "net_income": 2295.88,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 3157.84,
+        "income": 5100,
+        "month": "February",
+        "net": 1942.16,
+        "net_income": 1942.16,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 2699.77,
+        "income": 5100,
+        "month": "March",
+        "net": 2400.23,
+        "net_income": 2400.23,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 4797.15,
+        "income": 5100,
+        "month": "April",
+        "net": 302.85,
+        "net_income": 302.85,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 3049.55,
+        "income": 5100,
+        "month": "May",
+        "net": 2050.45,
+        "net_income": 2050.45,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 2710.36,
+        "income": 5100,
+        "month": "June",
+        "net": 2389.64,
+        "net_income": 2389.64,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 4788.92,
+        "income": 5250,
+        "month": "July",
+        "net": 461.08,
+        "net_income": 461.08,
+        "revenue": 5250,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 3227.48,
+        "income": 5250,
+        "month": "August",
+        "net": 2022.52,
+        "net_income": 2022.52,
+        "revenue": 5250,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 2700.09,
+        "income": 5250,
+        "month": "September",
+        "net": 2549.91,
+        "net_income": 2549.91,
+        "revenue": 5250,
+        "year": 2025
+      },
+      {
+        "entryCount": 9,
+        "expenses": 5207.7,
+        "income": 5250,
+        "month": "October",
+        "net": 42.3,
+        "net_income": 42.3,
+        "revenue": 5250,
+        "year": 2025
+      },
+      {
+        "entryCount": 7,
+        "expenses": 2475.42,
+        "income": 5350,
+        "month": "November",
+        "net": 2874.58,
+        "net_income": 2874.58,
+        "revenue": 5350,
+        "year": 2025
+      },
+      {
+        "entryCount": 9,
+        "expenses": 5553.08,
+        "income": 5250,
+        "month": "December",
+        "net": -303.08,
+        "net_income": -303.08,
+        "revenue": 5250,
+        "year": 2025
+      }
+    ],
+    "depreciation": {
+      "assets": [
+        {
+          "accumulatedDepreciation": 62266.67,
+          "currentYearDepreciation": 16981.82,
+          "depreciableBasis": 467000,
+          "propertyId": "fixture-prestwick-rental-2025",
+          "propertyName": "Prestwick Single-Family Rental",
+          "remainingBasis": 404733.33
+        }
+      ],
+      "summary": {
+        "assetCount": 1,
+        "totalAccumulatedDepreciation": 62266.67,
+        "totalCost": 785000,
+        "totalCurrentYearDepreciation": 16981.82,
+        "totalDepreciableBasis": 467000
+      }
+    },
+    "estimatedTaxes": {
+      "asOfDate": "2025-12-31",
+      "assumptions": {
+        "filingStatus": "married_filing_jointly",
+        "homeState": "MD",
+        "otherDeductions": 0,
+        "otherIncome": 185000,
+        "priorYearAdjustedGrossIncome": 192000,
+        "priorYearTotalTax": 36000,
+        "rentalServiceHours": 260,
+        "taxCredits": 2000,
+        "withholdingYtd": 24000
+      },
+      "payments": [],
+      "quarters": [
+        {
+          "breakdown": {
+            "annualizedIncome": 194571.26,
+            "annualizedTaxableIncome": 161157.01,
+            "expenses": 8661.73,
+            "federal": 6320.64,
+            "income": 15300,
+            "netIncome": 6638.27,
+            "state": 2344.15
+          },
+          "dueDate": "2025-04-15",
+          "estimatedDue": 1348.31,
+          "paid": 0,
+          "quarter": 1,
+          "remaining": 1348.31,
+          "status": "overdue"
+        },
+        {
+          "breakdown": {
+            "annualizedIncome": 186989.94,
+            "annualizedTaxableIncome": 155091.95,
+            "expenses": 10557.06,
+            "federal": 5987.06,
+            "income": 15300,
+            "netIncome": 4742.94,
+            "state": 2235.17
+          },
+          "dueDate": "2025-06-16",
+          "estimatedDue": 950,
+          "paid": 0,
+          "quarter": 2,
+          "remaining": 950,
+          "status": "overdue"
+        },
+        {
+          "breakdown": {
+            "annualizedIncome": 188152.22,
+            "annualizedTaxableIncome": 156021.78,
+            "expenses": 10716.49,
+            "federal": 6038.2,
+            "income": 15750,
+            "netIncome": 5033.51,
+            "state": 2251.88
+          },
+          "dueDate": "2025-09-15",
+          "estimatedDue": 1011.06,
+          "paid": 0,
+          "quarter": 3,
+          "remaining": 1011.06,
+          "status": "overdue"
+        },
+        {
+          "breakdown": {
+            "annualizedIncome": 185000,
+            "annualizedTaxableIncome": 153500,
+            "expenses": 13236.2,
+            "federal": 5899.5,
+            "income": 15850,
+            "netIncome": 2613.8,
+            "state": 2206.56
+          },
+          "dueDate": "2026-01-15",
+          "estimatedDue": 845.46,
+          "paid": 0,
+          "quarter": 4,
+          "remaining": 845.46,
+          "status": "unpaid"
+        }
+      ],
+      "summary": {
+        "totalEstimatedDue": 4154.83,
+        "totalPaid": 0,
+        "totalRemaining": 4154.83
+      }
+    },
+    "fixtureName": "prestwick-rental-2025",
+    "profitLoss": {
+      "expenses": [
+        {
+          "amount": 21600,
+          "code": "5500",
+          "name": "Mortgage Interest"
+        },
+        {
+          "amount": 8876.17,
+          "code": "5300",
+          "name": "Property Taxes"
+        },
+        {
+          "amount": 3300,
+          "code": "5400",
+          "name": "Management Fees"
+        },
+        {
+          "amount": 2585,
+          "code": "5000",
+          "name": "Repairs"
+        },
+        {
+          "amount": 2280,
+          "code": "5200",
+          "name": "Insurance"
+        },
+        {
+          "amount": 1740,
+          "code": "5600",
+          "name": "HOA Fees"
+        },
+        {
+          "amount": 830.31,
+          "code": "5100",
+          "name": "Utilities"
+        },
+        {
+          "amount": 760,
+          "code": "5700",
+          "name": "Landscaping"
+        },
+        {
+          "amount": 520,
+          "code": "5750",
+          "name": "Pest Control"
+        },
+        {
+          "amount": 350,
+          "code": "5900",
+          "name": "Legal & Professional"
+        },
+        {
+          "amount": 210,
+          "code": "5800",
+          "name": "Cleaning & Maintenance"
+        },
+        {
+          "amount": 120,
+          "code": "6000",
+          "name": "Advertising"
+        }
+      ],
+      "revenues": [
+        {
+          "amount": 62100,
+          "code": "4000",
+          "name": "Rent Income"
+        },
+        {
+          "amount": 100,
+          "code": "4100",
+          "name": "Late Fees"
+        }
+      ],
+      "summary": {
+        "netIncome": 19028.52,
+        "totalExpenses": 43171.48,
+        "totalRevenue": 62200
+      }
+    },
+    "rulesVersion": "2025.1",
+    "scheduleE": {
+      "entryCount": 99,
+      "lineAmounts": {
+        "ADVERTISING": 120,
+        "CLEANING_MAINTENANCE": 210,
+        "INSURANCE": 2280,
+        "LEGAL_PROFESSIONAL": 350,
+        "MANAGEMENT_FEES": 3300,
+        "MORTGAGE_INTEREST": 21600,
+        "OTHER": 3020,
+        "RENTS_RECEIVED": 62200,
+        "REPAIRS": 2585,
+        "TAXES": 8876.17,
+        "UTILITIES": 830.31
+      },
+      "summary": {
+        "line20Total": 43171.48,
+        "line21Income": 19028.52,
+        "netIncomeOrLoss": 19028.52,
+        "totalExpenses": 43171.48,
+        "totalIncome": 62200
+      }
+    },
+    "summary": {
+      "entryCount": 99,
+      "propertyCount": 1,
+      "vendorCount": 12
+    },
+    "taxYear": 2025,
+    "trialBalance": {
+      "accounts": [
+        {
+          "balance": 54128.52,
+          "code": "1000",
+          "credits": 0,
+          "debits": 54128.52,
+          "name": "Operating Cash",
+          "type": "ASSET"
+        },
+        {
+          "balance": 5100,
+          "code": "2100",
+          "credits": 5100,
+          "debits": 0,
+          "name": "Security Deposits Liability",
+          "type": "LIABILITY"
+        },
+        {
+          "balance": 30000,
+          "code": "3000",
+          "credits": 30000,
+          "debits": 0,
+          "name": "Owner's Equity",
+          "type": "EQUITY"
+        },
+        {
+          "balance": 62100,
+          "code": "4000",
+          "credits": 62100,
+          "debits": 0,
+          "name": "Rent Income",
+          "type": "REVENUE"
+        },
+        {
+          "balance": 100,
+          "code": "4100",
+          "credits": 100,
+          "debits": 0,
+          "name": "Late Fees",
+          "type": "REVENUE"
+        },
+        {
+          "balance": 2585,
+          "code": "5000",
+          "credits": 0,
+          "debits": 2585,
+          "name": "Repairs",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 830.31,
+          "code": "5100",
+          "credits": 0,
+          "debits": 830.31,
+          "name": "Utilities",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 2280,
+          "code": "5200",
+          "credits": 0,
+          "debits": 2280,
+          "name": "Insurance",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 8876.17,
+          "code": "5300",
+          "credits": 0,
+          "debits": 8876.17,
+          "name": "Property Taxes",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 3300,
+          "code": "5400",
+          "credits": 0,
+          "debits": 3300,
+          "name": "Management Fees",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 21600,
+          "code": "5500",
+          "credits": 0,
+          "debits": 21600,
+          "name": "Mortgage Interest",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 1740,
+          "code": "5600",
+          "credits": 0,
+          "debits": 1740,
+          "name": "HOA Fees",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 760,
+          "code": "5700",
+          "credits": 0,
+          "debits": 760,
+          "name": "Landscaping",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 520,
+          "code": "5750",
+          "credits": 0,
+          "debits": 520,
+          "name": "Pest Control",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 210,
+          "code": "5800",
+          "credits": 0,
+          "debits": 210,
+          "name": "Cleaning & Maintenance",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 350,
+          "code": "5900",
+          "credits": 0,
+          "debits": 350,
+          "name": "Legal & Professional",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 120,
+          "code": "6000",
+          "credits": 0,
+          "debits": 120,
+          "name": "Advertising",
+          "type": "EXPENSE"
+        }
+      ],
+      "isBalanced": true,
+      "totalCredits": 97300,
+      "totalDebits": 97300
+    },
+    "vendors1099": {
+      "formsReady": 2,
+      "formsWithMissingInfo": 0,
+      "threshold1099": 600,
+      "totalAmount": 3345,
+      "totalForms": 2,
+      "vendors": [
+        {
+          "missingInfo": [],
+          "name": "Prosperity Home Mortgage LLC",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 21600
+        },
+        {
+          "missingInfo": [],
+          "name": "Montgomery County Tax Office",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 8876.17
+        },
+        {
+          "missingInfo": [],
+          "name": "Northwind Property Management",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 3300
+        },
+        {
+          "missingInfo": [],
+          "name": "Potomac Home Services",
+          "ready": true,
+          "requires1099": true,
+          "totalPaid": 2585
+        },
+        {
+          "missingInfo": [],
+          "name": "Travelers Insurance",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 2280
+        },
+        {
+          "missingInfo": [],
+          "name": "Fallsreach HOA",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 1740
+        },
+        {
+          "missingInfo": [],
+          "name": "Potomac Green Landscaping LLC",
+          "ready": true,
+          "requires1099": true,
+          "totalPaid": 760
+        },
+        {
+          "missingInfo": [],
+          "name": "Senate Pest Control",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 520
+        },
+        {
+          "missingInfo": [],
+          "name": "Pepco",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 441.48
+        },
+        {
+          "missingInfo": [],
+          "name": "WSSC Water",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 388.83
+        },
+        {
+          "missingInfo": [],
+          "name": "Hillcrest CPA Group",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 350
+        },
+        {
+          "missingInfo": [],
+          "name": "MarketReady Cleaning Co",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 210
+        },
+        {
+          "missingInfo": [],
+          "name": "Zillow Rentals",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 120
+        }
+      ]
+    }
+  },
+  "canonicalSnapshot": {
+    "cashflowTrend": [
+      {
+        "entryCount": 8,
+        "expenses": 2804.12,
+        "income": 5100,
+        "month": "January",
+        "net": 2295.88,
+        "net_income": 2295.88,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 3157.84,
+        "income": 5100,
+        "month": "February",
+        "net": 1942.16,
+        "net_income": 1942.16,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 2699.77,
+        "income": 5100,
+        "month": "March",
+        "net": 2400.23,
+        "net_income": 2400.23,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 4797.15,
+        "income": 5100,
+        "month": "April",
+        "net": 302.85,
+        "net_income": 302.85,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 3049.55,
+        "income": 5100,
+        "month": "May",
+        "net": 2050.45,
+        "net_income": 2050.45,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 2710.36,
+        "income": 5100,
+        "month": "June",
+        "net": 2389.64,
+        "net_income": 2389.64,
+        "revenue": 5100,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 4788.92,
+        "income": 5250,
+        "month": "July",
+        "net": 461.08,
+        "net_income": 461.08,
+        "revenue": 5250,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 3227.48,
+        "income": 5250,
+        "month": "August",
+        "net": 2022.52,
+        "net_income": 2022.52,
+        "revenue": 5250,
+        "year": 2025
+      },
+      {
+        "entryCount": 8,
+        "expenses": 2700.09,
+        "income": 5250,
+        "month": "September",
+        "net": 2549.91,
+        "net_income": 2549.91,
+        "revenue": 5250,
+        "year": 2025
+      },
+      {
+        "entryCount": 9,
+        "expenses": 5207.7,
+        "income": 5250,
+        "month": "October",
+        "net": 42.3,
+        "net_income": 42.3,
+        "revenue": 5250,
+        "year": 2025
+      },
+      {
+        "entryCount": 7,
+        "expenses": 2475.42,
+        "income": 5350,
+        "month": "November",
+        "net": 2874.58,
+        "net_income": 2874.58,
+        "revenue": 5350,
+        "year": 2025
+      },
+      {
+        "entryCount": 9,
+        "expenses": 5553.08,
+        "income": 5250,
+        "month": "December",
+        "net": -303.08,
+        "net_income": -303.08,
+        "revenue": 5250,
+        "year": 2025
+      }
+    ],
+    "depreciation": {
+      "assets": [
+        {
+          "accumulatedDepreciation": 62266.67,
+          "currentYearDepreciation": 16981.82,
+          "depreciableBasis": 467000,
+          "propertyId": "fixture-prestwick-rental-2025",
+          "propertyName": "Prestwick Single-Family Rental",
+          "remainingBasis": 404733.33
+        }
+      ],
+      "summary": {
+        "assetCount": 1,
+        "totalAccumulatedDepreciation": 62266.67,
+        "totalCost": 785000,
+        "totalCurrentYearDepreciation": 16981.82,
+        "totalDepreciableBasis": 467000
+      }
+    },
+    "estimatedTaxes": {
+      "asOfDate": "2025-12-31",
+      "assumptions": {
+        "filingStatus": "married_filing_jointly",
+        "homeState": "MD",
+        "otherDeductions": 0,
+        "otherIncome": 185000,
+        "priorYearAdjustedGrossIncome": 192000,
+        "priorYearTotalTax": 36000,
+        "rentalServiceHours": 260,
+        "taxCredits": 2000,
+        "withholdingYtd": 24000
+      },
+      "payments": [],
+      "quarters": [
+        {
+          "breakdown": {
+            "annualizedIncome": 194571.26,
+            "annualizedTaxableIncome": 161157.01,
+            "expenses": 8661.73,
+            "federal": 6320.64,
+            "income": 15300,
+            "netIncome": 6638.27,
+            "state": 2344.15
+          },
+          "dueDate": "2025-04-15",
+          "estimatedDue": 1348.31,
+          "paid": 0,
+          "quarter": 1,
+          "remaining": 1348.31,
+          "status": "overdue"
+        },
+        {
+          "breakdown": {
+            "annualizedIncome": 186989.94,
+            "annualizedTaxableIncome": 155091.95,
+            "expenses": 10557.06,
+            "federal": 5987.06,
+            "income": 15300,
+            "netIncome": 4742.94,
+            "state": 2235.17
+          },
+          "dueDate": "2025-06-16",
+          "estimatedDue": 950,
+          "paid": 0,
+          "quarter": 2,
+          "remaining": 950,
+          "status": "overdue"
+        },
+        {
+          "breakdown": {
+            "annualizedIncome": 188152.22,
+            "annualizedTaxableIncome": 156021.78,
+            "expenses": 10716.49,
+            "federal": 6038.2,
+            "income": 15750,
+            "netIncome": 5033.51,
+            "state": 2251.88
+          },
+          "dueDate": "2025-09-15",
+          "estimatedDue": 1011.06,
+          "paid": 0,
+          "quarter": 3,
+          "remaining": 1011.06,
+          "status": "overdue"
+        },
+        {
+          "breakdown": {
+            "annualizedIncome": 185000,
+            "annualizedTaxableIncome": 153500,
+            "expenses": 13236.2,
+            "federal": 5899.5,
+            "income": 15850,
+            "netIncome": 2613.8,
+            "state": 2206.56
+          },
+          "dueDate": "2026-01-15",
+          "estimatedDue": 845.46,
+          "paid": 0,
+          "quarter": 4,
+          "remaining": 845.46,
+          "status": "unpaid"
+        }
+      ],
+      "summary": {
+        "totalEstimatedDue": 4154.83,
+        "totalPaid": 0,
+        "totalRemaining": 4154.83
+      }
+    },
+    "fixtureName": "prestwick-rental-2025",
+    "profitLoss": {
+      "expenses": [
+        {
+          "amount": 21600,
+          "code": "5500",
+          "name": "Mortgage Interest"
+        },
+        {
+          "amount": 8876.17,
+          "code": "5300",
+          "name": "Property Taxes"
+        },
+        {
+          "amount": 3300,
+          "code": "5400",
+          "name": "Management Fees"
+        },
+        {
+          "amount": 2585,
+          "code": "5000",
+          "name": "Repairs"
+        },
+        {
+          "amount": 2280,
+          "code": "5200",
+          "name": "Insurance"
+        },
+        {
+          "amount": 1740,
+          "code": "5600",
+          "name": "HOA Fees"
+        },
+        {
+          "amount": 830.31,
+          "code": "5100",
+          "name": "Utilities"
+        },
+        {
+          "amount": 760,
+          "code": "5700",
+          "name": "Landscaping"
+        },
+        {
+          "amount": 520,
+          "code": "5750",
+          "name": "Pest Control"
+        },
+        {
+          "amount": 350,
+          "code": "5900",
+          "name": "Legal & Professional"
+        },
+        {
+          "amount": 210,
+          "code": "5800",
+          "name": "Cleaning & Maintenance"
+        },
+        {
+          "amount": 120,
+          "code": "6000",
+          "name": "Advertising"
+        }
+      ],
+      "revenues": [
+        {
+          "amount": 62100,
+          "code": "4000",
+          "name": "Rent Income"
+        },
+        {
+          "amount": 100,
+          "code": "4100",
+          "name": "Late Fees"
+        }
+      ],
+      "summary": {
+        "netIncome": 19028.52,
+        "totalExpenses": 43171.48,
+        "totalRevenue": 62200
+      }
+    },
+    "rulesVersion": "2025.1",
+    "scheduleE": {
+      "entryCount": 99,
+      "lineAmounts": {
+        "ADVERTISING": 120,
+        "CLEANING_MAINTENANCE": 210,
+        "INSURANCE": 2280,
+        "LEGAL_PROFESSIONAL": 350,
+        "MANAGEMENT_FEES": 3300,
+        "MORTGAGE_INTEREST": 21600,
+        "OTHER": 3020,
+        "RENTS_RECEIVED": 62200,
+        "REPAIRS": 2585,
+        "TAXES": 8876.17,
+        "UTILITIES": 830.31
+      },
+      "summary": {
+        "line20Total": 43171.48,
+        "line21Income": 19028.52,
+        "netIncomeOrLoss": 19028.52,
+        "totalExpenses": 43171.48,
+        "totalIncome": 62200
+      }
+    },
+    "summary": {
+      "entryCount": 99,
+      "propertyCount": 1,
+      "vendorCount": 12
+    },
+    "taxYear": 2025,
+    "trialBalance": {
+      "accounts": [
+        {
+          "balance": 54128.52,
+          "code": "1000",
+          "credits": 0,
+          "debits": 54128.52,
+          "name": "Operating Cash",
+          "type": "ASSET"
+        },
+        {
+          "balance": 5100,
+          "code": "2100",
+          "credits": 5100,
+          "debits": 0,
+          "name": "Security Deposits Liability",
+          "type": "LIABILITY"
+        },
+        {
+          "balance": 30000,
+          "code": "3000",
+          "credits": 30000,
+          "debits": 0,
+          "name": "Owner's Equity",
+          "type": "EQUITY"
+        },
+        {
+          "balance": 62100,
+          "code": "4000",
+          "credits": 62100,
+          "debits": 0,
+          "name": "Rent Income",
+          "type": "REVENUE"
+        },
+        {
+          "balance": 100,
+          "code": "4100",
+          "credits": 100,
+          "debits": 0,
+          "name": "Late Fees",
+          "type": "REVENUE"
+        },
+        {
+          "balance": 2585,
+          "code": "5000",
+          "credits": 0,
+          "debits": 2585,
+          "name": "Repairs",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 830.31,
+          "code": "5100",
+          "credits": 0,
+          "debits": 830.31,
+          "name": "Utilities",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 2280,
+          "code": "5200",
+          "credits": 0,
+          "debits": 2280,
+          "name": "Insurance",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 8876.17,
+          "code": "5300",
+          "credits": 0,
+          "debits": 8876.17,
+          "name": "Property Taxes",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 3300,
+          "code": "5400",
+          "credits": 0,
+          "debits": 3300,
+          "name": "Management Fees",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 21600,
+          "code": "5500",
+          "credits": 0,
+          "debits": 21600,
+          "name": "Mortgage Interest",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 1740,
+          "code": "5600",
+          "credits": 0,
+          "debits": 1740,
+          "name": "HOA Fees",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 760,
+          "code": "5700",
+          "credits": 0,
+          "debits": 760,
+          "name": "Landscaping",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 520,
+          "code": "5750",
+          "credits": 0,
+          "debits": 520,
+          "name": "Pest Control",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 210,
+          "code": "5800",
+          "credits": 0,
+          "debits": 210,
+          "name": "Cleaning & Maintenance",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 350,
+          "code": "5900",
+          "credits": 0,
+          "debits": 350,
+          "name": "Legal & Professional",
+          "type": "EXPENSE"
+        },
+        {
+          "balance": 120,
+          "code": "6000",
+          "credits": 0,
+          "debits": 120,
+          "name": "Advertising",
+          "type": "EXPENSE"
+        }
+      ],
+      "isBalanced": true,
+      "totalCredits": 97300,
+      "totalDebits": 97300
+    },
+    "vendors1099": {
+      "formsReady": 2,
+      "formsWithMissingInfo": 0,
+      "threshold1099": 600,
+      "totalAmount": 3345,
+      "totalForms": 2,
+      "vendors": [
+        {
+          "missingInfo": [],
+          "name": "Prosperity Home Mortgage LLC",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 21600
+        },
+        {
+          "missingInfo": [],
+          "name": "Montgomery County Tax Office",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 8876.17
+        },
+        {
+          "missingInfo": [],
+          "name": "Northwind Property Management",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 3300
+        },
+        {
+          "missingInfo": [],
+          "name": "Potomac Home Services",
+          "ready": true,
+          "requires1099": true,
+          "totalPaid": 2585
+        },
+        {
+          "missingInfo": [],
+          "name": "Travelers Insurance",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 2280
+        },
+        {
+          "missingInfo": [],
+          "name": "Fallsreach HOA",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 1740
+        },
+        {
+          "missingInfo": [],
+          "name": "Potomac Green Landscaping LLC",
+          "ready": true,
+          "requires1099": true,
+          "totalPaid": 760
+        },
+        {
+          "missingInfo": [],
+          "name": "Senate Pest Control",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 520
+        },
+        {
+          "missingInfo": [],
+          "name": "Pepco",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 441.48
+        },
+        {
+          "missingInfo": [],
+          "name": "WSSC Water",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 388.83
+        },
+        {
+          "missingInfo": [],
+          "name": "Hillcrest CPA Group",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 350
+        },
+        {
+          "missingInfo": [],
+          "name": "MarketReady Cleaning Co",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 210
+        },
+        {
+          "missingInfo": [],
+          "name": "Zillow Rentals",
+          "ready": false,
+          "requires1099": false,
+          "totalPaid": 120
+        }
+      ]
+    }
+  }
+}

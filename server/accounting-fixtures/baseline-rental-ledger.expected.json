@@ -1,0 +1,249 @@
+{
+  "cashflowTrend": [
+    {
+      "entryCount": 7,
+      "expenses": 2830,
+      "income": 2500,
+      "month": "January",
+      "net": -330,
+      "net_income": -330,
+      "revenue": 2500,
+      "year": 2025
+    }
+  ],
+  "depreciation": {
+    "assets": [
+      {
+        "accumulatedDepreciation": 7272.73,
+        "currentYearDepreciation": 7272.73,
+        "depreciableBasis": 200000,
+        "propertyId": "property-1",
+        "propertyName": "Maple Street Rental",
+        "remainingBasis": 192727.27
+      }
+    ],
+    "summary": {
+      "assetCount": 1,
+      "totalAccumulatedDepreciation": 7272.73,
+      "totalCost": 275000,
+      "totalCurrentYearDepreciation": 7272.73,
+      "totalDepreciableBasis": 200000
+    }
+  },
+  "estimatedTaxes": null,
+  "fixtureName": "baseline-rental-ledger",
+  "profitLoss": {
+    "expenses": [
+      {
+        "amount": 900,
+        "code": "5500",
+        "name": "Mortgage Interest"
+      },
+      {
+        "amount": 700,
+        "code": "5000",
+        "name": "Repairs"
+      },
+      {
+        "amount": 450,
+        "code": "5700",
+        "name": "Landscaping"
+      },
+      {
+        "amount": 400,
+        "code": "5300",
+        "name": "Property Taxes"
+      },
+      {
+        "amount": 200,
+        "code": "5400",
+        "name": "Management Fees"
+      },
+      {
+        "amount": 180,
+        "code": "5100",
+        "name": "Utilities"
+      }
+    ],
+    "revenues": [
+      {
+        "amount": 2500,
+        "code": "4000",
+        "name": "Rent Income"
+      }
+    ],
+    "summary": {
+      "netIncome": -330,
+      "totalExpenses": 2830,
+      "totalRevenue": 2500
+    }
+  },
+  "rulesVersion": "2025.1",
+  "scheduleE": {
+    "entryCount": 9,
+    "lineAmounts": {
+      "MANAGEMENT_FEES": 200,
+      "MORTGAGE_INTEREST": 900,
+      "OTHER": 450,
+      "RENTS_RECEIVED": 2500,
+      "REPAIRS": 700,
+      "TAXES": 400,
+      "UTILITIES": 180
+    },
+    "summary": {
+      "line20Total": 2830,
+      "line21Income": -330,
+      "netIncomeOrLoss": -330,
+      "totalExpenses": 2830,
+      "totalIncome": 2500
+    }
+  },
+  "summary": {
+    "entryCount": 9,
+    "propertyCount": 1,
+    "vendorCount": 3
+  },
+  "taxYear": 2025,
+  "trialBalance": {
+    "accounts": [
+      {
+        "balance": 20870,
+        "code": "1000",
+        "credits": 0,
+        "debits": 20870,
+        "name": "Operating Cash",
+        "type": "ASSET"
+      },
+      {
+        "balance": 1200,
+        "code": "2100",
+        "credits": 1200,
+        "debits": 0,
+        "name": "Security Deposits Liability",
+        "type": "LIABILITY"
+      },
+      {
+        "balance": 20000,
+        "code": "3000",
+        "credits": 20000,
+        "debits": 0,
+        "name": "Owner's Equity",
+        "type": "EQUITY"
+      },
+      {
+        "balance": 2500,
+        "code": "4000",
+        "credits": 2500,
+        "debits": 0,
+        "name": "Rent Income",
+        "type": "REVENUE"
+      },
+      {
+        "balance": 700,
+        "code": "5000",
+        "credits": 0,
+        "debits": 700,
+        "name": "Repairs",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 180,
+        "code": "5100",
+        "credits": 0,
+        "debits": 180,
+        "name": "Utilities",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 400,
+        "code": "5300",
+        "credits": 0,
+        "debits": 400,
+        "name": "Property Taxes",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 200,
+        "code": "5400",
+        "credits": 0,
+        "debits": 200,
+        "name": "Management Fees",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 900,
+        "code": "5500",
+        "credits": 0,
+        "debits": 900,
+        "name": "Mortgage Interest",
+        "type": "EXPENSE"
+      },
+      {
+        "balance": 450,
+        "code": "5700",
+        "credits": 0,
+        "debits": 450,
+        "name": "Landscaping",
+        "type": "EXPENSE"
+      }
+    ],
+    "isBalanced": true,
+    "totalCredits": 23700,
+    "totalDebits": 23700
+  },
+  "vendors1099": {
+    "formsReady": 1,
+    "formsWithMissingInfo": 1,
+    "threshold1099": 600,
+    "totalAmount": 1600,
+    "totalForms": 2,
+    "vendors": [
+      {
+        "missingInfo": [
+          "TIN",
+          "Address",
+          "W-9"
+        ],
+        "name": "Wells Fargo Home Mortgage",
+        "ready": false,
+        "requires1099": true,
+        "totalPaid": 900
+      },
+      {
+        "missingInfo": [],
+        "name": "Acme Plumbing",
+        "ready": true,
+        "requires1099": true,
+        "totalPaid": 700
+      },
+      {
+        "missingInfo": [],
+        "name": "Green Yard LLC",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 450
+      },
+      {
+        "missingInfo": [],
+        "name": "Wake County Tax Office",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 400
+      },
+      {
+        "missingInfo": [],
+        "name": "Northwind Property Management",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 200
+      },
+      {
+        "missingInfo": [],
+        "name": "City Utilities",
+        "ready": false,
+        "requires1099": false,
+        "totalPaid": 180
+      }
+    ]
+  }
+}

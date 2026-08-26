@@ -1,0 +1,131 @@
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+functions/.env.yaml
+
+# Dependencies
+node_modules/
+.playwright-env/
+__pycache__/
+
+# Build outputs
+dist/
+dist-internal/
+dist-maintenance/
+build/
+.vite/
+dist-scanner*/
+.firebase/
+
+# Logs
+*.log
+npm-debug.log*
+scripts/.iot-migration-export/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
+
+# Certificates (if self-signed/local dev)
+certs/*.pem
+
+# Sensitive data
+server/data/**/*.json
+server/data/**/*.db
+server/subscriptions.json
+public/submissions/*.json
+public/submit-*.png
+**/*.heic
+**/*.splat
+.tmp/
+tmp/
+tmp-*/
+test-images/
+
+# Room scan data (images and temp files)
+server/data/room-scans/
+server/data/temp-stitching/
+server/data/master-jobs/
+test-images/
+
+# Local renovation test photo sets (source code in server/renovation/*.js stays tracked)
+server/renovation/Test Bathroom*/
+
+# Firebase/Google Cloud credentials
+backend/config/firebase-service-account.json
+*-service-account.json
+firebase-adminsdk-*.json
+server/.gmail-credentials.json
+server/.gmail-token.json
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+*-venv/
+ENV/
+*.bak
+*.backup
+
+# Snowflake Keys - DO NOT COMMIT
+.snowflake/
+
+# Large 3D mesh files
+public/edited-meshes/
+public/floor-models/
+public/floor-overlays/
+public/generated-objects/
+public/generated-textures/
+public/mesh-segments/
+public/preprocessed-meshes/
+public/renovation-concepts/
+public/retextured/
+public/retextured-meshes/
+server/data/photogrammetry/
+data/photogrammetry/
+
+# SQLite sidecar files
+*.db-wal
+*.db-shm
+server/data/bookkeeping/*.db
+server/server/data/bookkeeping/*.db
+
+# User-generated/uploaded documents
+server/uploads/
+
+# Local model cache artifacts
+tmp/local-model-cache/
+
+# Local scratch and generated artifacts
+.tmp/
+tmp-preview/
+
+# Local marketing/docs image assets
+docs/shelly-retrofit-valve-kit/assets/
+landing-coming-soon/owner-sms-opt-in.png
+landing/owner-sms-opt-in.png
+landing-coming-soon/favicon.svg
+
+# Lab artifacts that must never re-enter this snapshot
+*.ply
+*.jsonl
+public/test-mesh/
+public/mesh-viewer.html
+debug-textures/
+data/renovation-plans/
+server/temp/
+ngrok.yml

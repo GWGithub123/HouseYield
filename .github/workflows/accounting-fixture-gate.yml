@@ -1,0 +1,47 @@
+name: Accounting Fixture Gate
+
+on:
+  push:
+    paths:
+      - '.github/workflows/accounting-fixture-gate.yml'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'server/accounting-core/**'
+      - 'server/accounting-fixtures/**'
+      - 'server/bookkeeping-firestore.js'
+      - 'server/tax-engine-firestore.js'
+      - 'server/test-accounting-fixture.js'
+      - 'server/test-bookkeeping-shadow-fixture.js'
+      - 'src/shared/**'
+  pull_request:
+    paths:
+      - '.github/workflows/accounting-fixture-gate.yml'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'server/accounting-core/**'
+      - 'server/accounting-fixtures/**'
+      - 'server/bookkeeping-firestore.js'
+      - 'server/tax-engine-firestore.js'
+      - 'server/test-accounting-fixture.js'
+      - 'server/test-bookkeeping-shadow-fixture.js'
+      - 'src/shared/**'
+
+jobs:
+  accounting-fixtures:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run accounting fixture regression suite
+        run: npm run test:accounting-fixture

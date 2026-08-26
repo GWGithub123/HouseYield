@@ -1,0 +1,186 @@
+{
+  "fixtureName": "baseline-rental-ledger",
+  "taxYear": 2025,
+  "accounts": {
+    "1000": { "name": "Operating Cash", "type": "ASSET" },
+    "2100": { "name": "Security Deposits Liability", "type": "LIABILITY" },
+    "3000": { "name": "Owner's Equity", "type": "EQUITY" },
+    "4000": { "name": "Rent Income", "type": "REVENUE" },
+    "5000": { "name": "Repairs", "type": "EXPENSE" },
+    "5100": { "name": "Utilities", "type": "EXPENSE" },
+    "5300": { "name": "Property Taxes", "type": "EXPENSE" },
+    "5400": { "name": "Management Fees", "type": "EXPENSE" },
+    "5500": { "name": "Mortgage Interest", "type": "EXPENSE" },
+    "5700": { "name": "Landscaping", "type": "EXPENSE" }
+  },
+  "properties": [
+    {
+      "id": "property-1",
+      "name": "Maple Street Rental",
+      "address": "123 Maple Street, Raleigh, NC",
+      "state": "NC",
+      "purchaseDate": "2025-01-01",
+      "purchasePrice": 275000,
+      "landValue": 75000,
+      "improvementValue": 200000,
+      "fairRentalDays": 365,
+      "personalUseDays": 0
+    }
+  ],
+  "vendors": [
+    {
+      "name": "Acme Plumbing",
+      "vendorType": "individual",
+      "ein": "12-3456789",
+      "address": "77 Pipe Lane",
+      "city": "Raleigh",
+      "state": "NC",
+      "zip": "27601",
+      "w9OnFile": true
+    },
+    {
+      "name": "Green Yard LLC",
+      "vendorType": "llc",
+      "ein": "98-7654321",
+      "address": "42 Garden Road",
+      "city": "Raleigh",
+      "state": "NC",
+      "zip": "27605",
+      "w9OnFile": false
+    },
+    {
+      "name": "Northwind Property Management",
+      "vendorType": "corporation",
+      "ein": "11-1111111",
+      "address": "900 Main Street",
+      "city": "Raleigh",
+      "state": "NC",
+      "zip": "27603",
+      "w9OnFile": true
+    }
+  ],
+  "entries": [
+    {
+      "id": "opening-balance",
+      "date": "2025-01-01",
+      "memo": "Opening balance",
+      "type": "equity",
+      "propertyId": "property-1",
+      "lines": [
+        { "accountCode": "1000", "accountName": "Operating Cash", "amount": 20000, "dc": "D", "propertyId": "property-1" },
+        { "accountCode": "3000", "accountName": "Owner's Equity", "amount": 20000, "dc": "C", "propertyId": "property-1" }
+      ]
+    },
+    {
+      "id": "rent-january",
+      "date": "2025-01-05",
+      "memo": "January rent payment",
+      "type": "income",
+      "category": "Rent Income",
+      "amount": 2500,
+      "vendor": "Tenant A",
+      "propertyId": "property-1",
+      "lines": [
+        { "accountCode": "1000", "accountName": "Operating Cash", "amount": 2500, "dc": "D", "propertyId": "property-1" },
+        { "accountCode": "4000", "accountName": "Rent Income", "amount": 2500, "dc": "C", "propertyId": "property-1" }
+      ]
+    },
+    {
+      "id": "security-deposit",
+      "date": "2025-01-05",
+      "memo": "Security deposit received",
+      "type": "liability",
+      "amount": 1200,
+      "vendor": "Tenant A",
+      "propertyId": "property-1",
+      "lines": [
+        { "accountCode": "1000", "accountName": "Operating Cash", "amount": 1200, "dc": "D", "propertyId": "property-1" },
+        { "accountCode": "2100", "accountName": "Security Deposits Liability", "amount": 1200, "dc": "C", "propertyId": "property-1" }
+      ]
+    },
+    {
+      "id": "plumbing-repair",
+      "date": "2025-01-12",
+      "memo": "Emergency plumbing repair",
+      "type": "expense",
+      "category": "Repairs",
+      "amount": 700,
+      "vendor": "Acme Plumbing",
+      "propertyId": "property-1",
+      "lines": [
+        { "accountCode": "5000", "accountName": "Repairs", "amount": 700, "dc": "D", "propertyId": "property-1" },
+        { "accountCode": "1000", "accountName": "Operating Cash", "amount": 700, "dc": "C", "propertyId": "property-1" }
+      ]
+    },
+    {
+      "id": "utility-bill",
+      "date": "2025-01-15",
+      "memo": "January utilities",
+      "type": "expense",
+      "category": "Utilities",
+      "amount": 180,
+      "vendor": "City Utilities",
+      "propertyId": "property-1",
+      "lines": [
+        { "accountCode": "5100", "accountName": "Utilities", "amount": 180, "dc": "D", "propertyId": "property-1" },
+        { "accountCode": "1000", "accountName": "Operating Cash", "amount": 180, "dc": "C", "propertyId": "property-1" }
+      ]
+    },
+    {
+      "id": "management-fee",
+      "date": "2025-01-18",
+      "memo": "Monthly management fee",
+      "type": "expense",
+      "category": "Management Fees",
+      "amount": 200,
+      "vendor": "Northwind Property Management",
+      "propertyId": "property-1",
+      "lines": [
+        { "accountCode": "5400", "accountName": "Management Fees", "amount": 200, "dc": "D", "propertyId": "property-1" },
+        { "accountCode": "1000", "accountName": "Operating Cash", "amount": 200, "dc": "C", "propertyId": "property-1" }
+      ]
+    },
+    {
+      "id": "mortgage-interest",
+      "date": "2025-01-20",
+      "memo": "Mortgage interest payment",
+      "type": "expense",
+      "category": "Mortgage Interest",
+      "amount": 900,
+      "vendor": "Wells Fargo Home Mortgage",
+      "propertyId": "property-1",
+      "lines": [
+        { "accountCode": "5500", "accountName": "Mortgage Interest", "amount": 900, "dc": "D", "propertyId": "property-1" },
+        { "accountCode": "1000", "accountName": "Operating Cash", "amount": 900, "dc": "C", "propertyId": "property-1" }
+      ]
+    },
+    {
+      "id": "property-tax",
+      "date": "2025-01-22",
+      "memo": "County property tax payment",
+      "type": "expense",
+      "category": "Property Taxes",
+      "amount": 400,
+      "vendor": "Wake County Tax Office",
+      "propertyId": "property-1",
+      "lines": [
+        { "accountCode": "5300", "accountName": "Property Taxes", "amount": 400, "dc": "D", "propertyId": "property-1" },
+        { "accountCode": "1000", "accountName": "Operating Cash", "amount": 400, "dc": "C", "propertyId": "property-1" }
+      ]
+    },
+    {
+      "id": "landscaping",
+      "date": "2025-01-25",
+      "memo": "Quarterly landscaping service",
+      "type": "expense",
+      "category": "Landscaping",
+      "amount": 450,
+      "vendor": "Green Yard LLC",
+      "propertyId": "property-1",
+      "lines": [
+        { "accountCode": "5700", "accountName": "Landscaping", "amount": 450, "dc": "D", "propertyId": "property-1" },
+        { "accountCode": "1000", "accountName": "Operating Cash", "amount": 450, "dc": "C", "propertyId": "property-1" }
+      ]
+    }
+  ]
+}

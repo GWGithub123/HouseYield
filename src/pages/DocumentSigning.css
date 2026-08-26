@@ -1,0 +1,527 @@
+.signing-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f1f5f9;
+  padding: 24px;
+}
+
+.signing-page.loading,
+.signing-page.error,
+.signing-page.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(99, 102, 241, 0.3);
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-icon,
+.success-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.signing-page.error h1,
+.signing-page.success h1 {
+  font-size: 28px;
+  margin: 0 0 16px 0;
+  color: #f8fafc;
+}
+
+.signing-page.error p,
+.signing-page.success p {
+  color: #94a3b8;
+  max-width: 500px;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+.success-details {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row .label {
+  color: #94a3b8;
+}
+
+.detail-row .value {
+  color: #f8fafc;
+  font-weight: 500;
+}
+
+/* Header */
+.signing-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 32px auto;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.header-icon {
+  font-size: 48px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+
+.header-content h1 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.header-meta {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+/* Body */
+.signing-body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Cards */
+.signer-info-card,
+.document-content-card,
+.signature-status-card,
+.signature-input-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.signer-info-card h3,
+.document-content-card h3,
+.signature-status-card h3,
+.signature-input-card h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* Signer Info */
+.signer-details {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.signer-avatar {
+  font-size: 36px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 50%;
+}
+
+.signer-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.signer-email {
+  font-size: 14px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.signer-role {
+  font-size: 13px;
+  color: #a5b4fc;
+  text-transform: capitalize;
+  margin-top: 4px;
+  padding: 2px 10px;
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* Document Content */
+.document-scroll {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.document-scroll pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+/* Signature Status */
+.status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.status-item.current {
+  border-color: rgba(99, 102, 241, 0.5);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.status-item.signed {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.status-icon {
+  font-size: 20px;
+}
+
+.status-name {
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.status-role {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.status-text {
+  margin-left: auto;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.status-item.current .status-text {
+  color: #a5b4fc;
+  font-weight: 500;
+}
+
+.status-item.signed .status-text {
+  color: #34d399;
+}
+
+/* Signature Input */
+.signature-hint {
+  color: #94a3b8;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+}
+
+.canvas-container {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.signature-canvas {
+  width: 100%;
+  height: 180px;
+  cursor: crosshair;
+  touch-action: none;
+  display: block;
+}
+
+.canvas-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #94a3b8;
+  font-size: 18px;
+  font-style: italic;
+  pointer-events: none;
+}
+
+.clear-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.clear-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Legal Agreement */
+.legal-agreement {
+  margin: 24px 0;
+  padding: 20px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 12px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: #6366f1;
+}
+
+.agreement-text {
+  font-size: 14px;
+  color: #fbbf24;
+  line-height: 1.6;
+}
+
+/* Sign Button */
+.sign-btn {
+  width: 100%;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sign-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.4);
+}
+
+.sign-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.sign-btn .spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Primary Button */
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .signing-page {
+    padding: 16px;
+  }
+
+  .signing-header {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .header-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 36px;
+  }
+
+  .header-content h1 {
+    font-size: 20px;
+  }
+
+  .signer-info-card,
+  .document-content-card,
+  .signature-status-card,
+  .signature-input-card {
+    padding: 16px;
+  }
+
+  .document-scroll {
+    max-height: 300px;
+  }
+
+  .signature-canvas {
+    height: 150px;
+  }
+}
+
+/* ── ERSD Consent Step ─────────────────────────────────────────────────── */
+.ersd-step-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.ersd-step-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  margin-bottom: 16px;
+}
+
+.ersd-step-intro {
+  font-size: 15px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.ersd-step-text {
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #94a3b8;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+}
+
+.ersd-step-text p {
+  margin: 0 0 12px 0;
+}
+
+.ersd-step-text p:last-child {
+  margin-bottom: 0;
+}
+
+.ersd-step-text strong {
+  color: #e2e8f0;
+}
+
+.ersd-accept-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ersd-accept-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.4);
+}
+
+.ersd-step-decline-note {
+  margin: 14px 0 0 0;
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+}

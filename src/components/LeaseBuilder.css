@@ -1,0 +1,407 @@
+.lease-builder {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.lease-builder-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.lease-builder-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid #2563eb;
+}
+
+.lease-builder-header h1 {
+  font-size: 2.5rem;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+}
+
+.lease-builder-header p {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+/* Form Styles */
+.lease-builder-form {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+  padding: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.form-section:last-child {
+  border-bottom: none;
+}
+
+.form-section h2 {
+  font-size: 1.5rem;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-description {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.form-field input,
+.form-field textarea {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-field input[type="number"] {
+  max-width: 200px;
+}
+
+/* Custom Sections */
+.custom-section {
+  margin-bottom: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.section-toggle {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: #f9fafb;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  transition: background-color 0.2s;
+}
+
+.section-toggle:hover {
+  background: #f3f4f6;
+}
+
+.section-toggle.active {
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+.toggle-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.section-content {
+  padding: 1.5rem;
+  background: white;
+}
+
+.baseline-preview {
+  padding: 1rem;
+  background: #f9fafb;
+  border-left: 4px solid #93c5fd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.baseline-preview strong {
+  color: #1e40af;
+  font-size: 0.9rem;
+}
+
+.baseline-preview p {
+  margin-top: 0.5rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.custom-input label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.custom-input textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.custom-input textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Actions */
+.form-actions {
+  padding: 2rem;
+  text-align: center;
+  background: #f9fafb;
+}
+
+.btn-generate {
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-generate:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+.btn-generate:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Preview Styles */
+.lease-preview {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.preview-header {
+  padding: 2rem;
+  border-bottom: 2px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.preview-header h2 {
+  font-size: 1.8rem;
+  color: #1e293b;
+  margin: 0;
+}
+
+.preview-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.btn-secondary:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+/* Summary */
+.lease-summary {
+  margin: 2rem;
+  padding: 1.5rem;
+  background: #eff6ff;
+  border-left: 4px solid #2563eb;
+  border-radius: 8px;
+}
+
+.lease-summary h3 {
+  color: #1e40af;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.summary-content {
+  color: #1e293b;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  font-size: 0.95rem;
+}
+
+/* Document */
+.lease-document {
+  padding: 3rem;
+  background: white;
+  max-width: 900px;
+  margin: 2rem auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.document-header {
+  text-align: center;
+  padding-bottom: 2rem;
+  border-bottom: 3px double #1e293b;
+  margin-bottom: 2rem;
+}
+
+.document-header h1 {
+  font-size: 2rem;
+  color: #1e293b;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.generated-date {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.document-section {
+  margin-bottom: 2rem;
+  page-break-inside: avoid;
+}
+
+.document-section h2 {
+  font-size: 1.3rem;
+  color: #1e40af;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #93c5fd;
+  padding-bottom: 0.5rem;
+}
+
+.section-content {
+  color: #1e293b;
+  line-height: 1.8;
+  text-align: justify;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .lease-builder {
+    padding: 1rem;
+  }
+
+  .lease-builder-header h1 {
+    font-size: 2rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .preview-actions {
+    flex-direction: column;
+  }
+
+  .lease-document {
+    padding: 1.5rem;
+  }
+
+  .document-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .preview-header,
+  .lease-summary {
+    display: none;
+  }
+
+  .lease-document {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .document-section {
+    page-break-inside: avoid;
+  }
+}

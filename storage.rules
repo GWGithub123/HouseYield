@@ -1,0 +1,123 @@
+rules_version = '2';
+
+// Firebase Storage Security Rules
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // ============================================================================
+    // PROFILE PHOTOS - Users can only access their own profile photos
+    // Path: /profile-photos/{userId}/{filename}
+    // ============================================================================
+    match /profile-photos/{userId}/{fileName} {
+      // Only the owner can read/write their profile photo
+      allow read: if request.auth != null;  // Anyone authenticated can view profile photos
+      allow write: if request.auth != null && request.auth.uid == userId;
+      allow delete: if request.auth != null && request.auth.uid == userId;
+      
+      // Validate file size (max 5MB) and content type
+      allow create: if request.auth != null 
+        && request.auth.uid == userId
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+    
+    // ============================================================================
+    // INSURANCE DOCUMENTS - Tenants upload, owners and tenants can view
+    // Path: /insurance/{ownerId}/{propertyId}/{tenantId}/{filename}
+    // ============================================================================
+    match /insurance/{ownerId}/{propertyId}/{tenantId}/{fileName} {
+      // Tenant can upload their own insurance
+      allow write: if request.auth != null && request.auth.uid == tenantId;
+      // Owner can view tenant's insurance for their property
+      allow read: if request.auth != null && (request.auth.uid == ownerId || request.auth.uid == tenantId);
+      // Only uploader can delete
+      allow delete: if request.auth != null && request.auth.uid == tenantId;
+      
+      // Validate file size (max 10MB) and content type
+      allow create: if request.auth != null 
+        && request.auth.uid == tenantId
+        && request.resource.size < 10 * 1024 * 1024
+        && (request.resource.contentType.matches('image/.*') || request.resource.contentType == 'application/pdf');
+    }
+
+    // Owner-controlled evidence for water-mitigation underwriting packets.
+    // Path: /insurance-packets/{ownerId}/{propertyId}/{category}/{filename}
+    match /insurance-packets/{ownerId}/{propertyId}/{category}/{fileName} {
+      allow read, delete: if request.auth != null && request.auth.uid == ownerId;
+      allow create: if request.auth != null
+        && request.auth.uid == ownerId
+        && request.resource.size < 15 * 1024 * 1024
+        && (
+          request.resource.contentType.matches('image/.*')
+          || request.resource.contentType == 'application/pdf'
+        );
+    }
+    
+    // ============================================================================
+    // DOCUMENTS - Property documents uploaded by owners
+    // Path: /documents/{ownerId}/{propertyId}/{filename}
+    // ============================================================================
+    match /documents/{ownerId}/{propertyId}/{fileName} {
+      // Owner can read/write documents for their properties
+      allow read: if request.auth != null && request.auth.uid == ownerId;
+      allow write: if request.auth != null && request.auth.uid == ownerId;
+      allow delete: if request.auth != null && request.auth.uid == ownerId;
+      
+      // Validate file size (max 25MB)
+      allow create: if request.auth != null 
+        && request.auth.uid == ownerId
+        && request.resource.size < 25 * 1024 * 1024;
+    }
+    
+    // ============================================================================
+    // ROOM SCANS - 3D scan photos and models
+    // Path: /room-scans/{userId}/{scanId}/{filename}
+    // ============================================================================
+    match /room-scans/{userId}/{scanId}/{fileName} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null && request.auth.uid == userId;
+      allow delete: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow images up to 10MB each
+      allow create: if request.auth != null 
+        && request.auth.uid == userId
+        && request.resource.size < 10 * 1024 * 1024;
+    }
+    
+    // ============================================================================
+    // RENOVATION PREVIEWS - AI-generated renovation images
+    // Path: /renovation-previews/{userId}/{propertyId}/{filename}
+    // ============================================================================
+    match /renovation-previews/{userId}/{propertyId}/{fileName} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null && request.auth.uid == userId;
+      allow delete: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow images up to 5MB
+      allow create: if request.auth != null 
+        && request.auth.uid == userId
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+    
+    // ============================================================================
+    // 3D MODELS - Generated GLB/GLTF models
+    // Path: /3d-models/{userId}/{modelId}/{filename}
+    // ============================================================================
+    match /3d-models/{userId}/{modelId}/{fileName} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null && request.auth.uid == userId;
+      allow delete: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow models up to 100MB
+      allow create: if request.auth != null 
+        && request.auth.uid == userId
+        && request.resource.size < 100 * 1024 * 1024;
+    }
+    
+    // Catch-all: deny by default
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

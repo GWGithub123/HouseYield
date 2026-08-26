@@ -1,0 +1,205 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user owns the document
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Helper function to get user role from user profile
+    function getUserRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+    
+    // Users collection - users can read/write their own data
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isOwner(userId);
+      allow update, delete: if isOwner(userId);
+    }
+    
+    // Contractors collection - public read, owner write
+    match /contractors/{contractorId} {
+      allow read: if true; // Public profiles
+      allow create: if isOwner(contractorId);
+      allow update, delete: if isOwner(contractorId);
+    }
+    
+    // Marketplace listings - anyone can read active, owners can manage
+    match /marketplace_listings/{listingId} {
+      // Anyone can read active listings
+      allow read: if resource == null || resource.data.status == 'active' || 
+                     isOwner(resource.data.propertyOwnerId);
+      
+      // Only authenticated users can create
+      allow create: if isAuthenticated();
+      
+      // Only listing owner can update/delete
+      allow update, delete: if isAuthenticated() && 
+                               request.auth.uid == resource.data.propertyOwnerId;
+      
+      // Bids subcollection
+      match /bids/{bidId} {
+        allow read: if isAuthenticated();
+        // Contractors can create bids
+        allow create: if isAuthenticated();
+        // Only bid owner can update
+        allow update: if isOwner(resource.data.contractorId);
+        // Only listing owner or bid owner can delete
+        allow delete: if isOwner(resource.data.contractorId) || 
+                        isOwner(get(/databases/$(database)/documents/marketplace_listings/$(listingId)).data.propertyOwnerId);
+      }
+    }
+    
+    // Contractor bids collection (denormalized for querying)
+    match /contractor_bids/{bidId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isOwner(resource.data.contractorId);
+    }
+    
+    // Properties collection
+    match /properties/{propertyId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isOwner(resource.data.ownerId);
+    }
+    
+    // Room scans (linked to properties)
+    match /room_scans/{scanId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isOwner(resource.data.ownerId);
+    }
+
+    // Renovation previews - users can only access preview metadata for their own properties
+    match /renovationPreviews/{previewId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+    
+    // Environmental data cache - public read, authenticated write
+    match /environmental_cache/{cacheDoc} {
+      // Anyone can read cached environmental data (improves performance)
+      allow read: if true;
+      
+      // Authenticated users can write cache entries
+      allow write: if isAuthenticated();
+    }
+    
+    // Shelly devices - allow read for dashboard (auth recommended for production)
+    match /shelly_devices/{deviceId} {
+      // Allow read for dashboard display
+      allow read: if true;
+      
+      // Cloud Functions write via Admin SDK (bypasses rules)
+      // Authenticated users can also register devices
+      allow create, update: if true;
+      allow delete: if isAuthenticated();
+    }
+
+    // Tombstone list so BLE gateway webhooks stop resurrecting deleted sensors
+    match /shelly_deleted_devices/{deviceId} {
+      allow read: if true;
+      allow create, update: if isAuthenticated();
+      allow delete: if false;
+    }
+    
+    // Sensor readings - allow read for dashboard
+    match /sensor_readings/{readingId} {
+      allow read: if true;
+      // Cloud Functions write via Admin SDK
+      allow write: if false; // Only Cloud Functions can write
+    }
+    
+    // Alerts - allow read and acknowledge
+    match /alerts/{alertId} {
+      allow read: if true;
+      // Allow users to acknowledge alerts
+      allow update: if true;
+      // Cloud Functions create alerts
+      allow create: if false;
+    }
+    
+    // Portfolio collection - users can manage their own portfolio data
+    match /portfolios/{userId} {
+      allow read, write: if isOwner(userId);
+      
+      // Assets subcollection
+      match /assets/{assetId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // Liabilities subcollection (mortgages, loans, etc.)
+      match /liabilities/{liabilityId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // Snapshots subcollection (historical portfolio values)
+      match /snapshots/{snapshotId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+    
+    // Documents collection - users can only access their own documents
+    match /documents/{documentId} {
+      // Users can read documents they own, are tenants on, or have been invited to sign
+      allow read: if isAuthenticated() && (
+        resource.data.ownerId == request.auth.uid ||
+        resource.data.tenantId == request.auth.uid ||
+        request.auth.uid in resource.data.signatureRequests.signerId
+      );
+      
+      // Only document owner can create/update/delete
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() && resource.data.ownerId == request.auth.uid;
+      allow delete: if isAuthenticated() && resource.data.ownerId == request.auth.uid;
+    }
+    
+    // Bookkeeping/transactions collection
+    match /transactions/{transactionId} {
+      allow read, write: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+    
+    // Maintenance requests
+    match /maintenance_requests/{requestId} {
+      allow read: if isAuthenticated() && (
+        resource.data.ownerId == request.auth.uid ||
+        resource.data.tenantId == request.auth.uid
+      );
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && resource.data.ownerId == request.auth.uid;
+    }
+    
+    // Tenant invites - owners can read their invites, server manages via Admin SDK
+    match /tenant_invites/{inviteToken} {
+      // Owners can read invites they created
+      allow read: if isAuthenticated() && resource.data.ownerId == request.auth.uid;
+      // Server creates/updates via Admin SDK (bypasses rules)
+      allow create, update, delete: if false;
+    }
+    
+    // Tenants collection - owners can read their tenants, tenants can read themselves
+    match /tenants/{tenantId} {
+      // Owners can read tenants linked to their properties
+      // Tenants can read their own data
+      allow read: if isAuthenticated() && (
+        resource.data.ownerId == request.auth.uid ||
+        resource.data.firebaseUid == request.auth.uid
+      );
+      // Server creates tenants via Admin SDK (bypasses rules)
+      allow create: if false;
+      // Tenants can update their own profile (limited fields)
+      allow update: if isAuthenticated() && resource.data.firebaseUid == request.auth.uid;
+      // Only owners can delete
+      allow delete: if isAuthenticated() && resource.data.ownerId == request.auth.uid;
+    }
+  }
+}

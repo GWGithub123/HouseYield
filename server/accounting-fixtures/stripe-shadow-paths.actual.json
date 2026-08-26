@@ -1,0 +1,155 @@
+{
+  "balanceCases": [
+    {
+      "candidate": {
+        "financeEventInput": {
+          "amount": 1213.75,
+          "cashAccountCode": "1020",
+          "counterpartyName": "April rent payment",
+          "effectiveDate": "2024-04-24",
+          "financeEventType": "income_received",
+          "idempotencyKey": "stripe:balance:txn_balance_charge_1",
+          "incomeAccountCode": "4000",
+          "memo": "Payment received: April rent payment",
+          "metadata": {
+            "feeAmount": 36.25,
+            "grossAmount": 1250,
+            "legacyRoute": "sync-transactions",
+            "reportingCategory": "charge",
+            "shadowMode": true,
+            "stripeObject": "balance_transaction",
+            "stripeType": "charge"
+          },
+          "propertyId": "fixture-property",
+          "sourceRef": "balance_transaction:txn_balance_charge_1",
+          "sourceSystem": "STRIPE",
+          "userId": "fixture-user"
+        },
+        "ok": true,
+        "sourceEvent": {
+          "occurredAt": "2024-04-24T23:06:40.000Z",
+          "payload": {
+            "amount": 125000,
+            "created": 1714000000,
+            "description": "April rent payment",
+            "fee": 3625,
+            "id": "txn_balance_charge_1",
+            "net": 121375,
+            "reporting_category": "charge",
+            "type": "charge"
+          },
+          "propertyId": "fixture-property",
+          "sourceEventType": "stripe.balance_transaction",
+          "sourceObjectId": "txn_balance_charge_1",
+          "sourceSystem": "STRIPE",
+          "userId": "fixture-user"
+        }
+      },
+      "label": "balance-charge-posts-income"
+    }
+  ],
+  "financialConnectionsCases": [
+    {
+      "candidate": {
+        "ok": false,
+        "pendingMatchInput": {
+          "amount": 2500,
+          "effectiveDate": "2024-04-24",
+          "idempotencyKey": "stripe:financial-connections:pending-match:txn_fc_transfer_internal_1",
+          "metadata": {
+            "canonicalAccountCode": null,
+            "classificationRule": null,
+            "legacyAccountCode": null,
+            "legacyRoute": "sync-financial-connections-transactions",
+            "shadowMode": true,
+            "stripeCategory": "transfer.internal",
+            "stripeObject": "financial_connections_transaction"
+          },
+          "notes": "Bank-side transfer requires reviewer confirmation before canonical posting.",
+          "propertyId": "fixture-property",
+          "reconciliationScope": "cash_movement_review",
+          "sourceRef": "financial_connections_transaction:txn_fc_transfer_internal_1",
+          "sourceSystem": "STRIPE",
+          "userId": "fixture-user"
+        },
+        "reason": "Transfer-category bank transaction is staged for reconciliation review instead of being dropped from the canonical ledger path.",
+        "sourceEvent": {
+          "occurredAt": "2024-04-24T23:06:40.000Z",
+          "payload": {
+            "amount": -250000,
+            "category": "transfer.internal",
+            "description": "Internal transfer to reserve account",
+            "id": "txn_fc_transfer_internal_1",
+            "merchant_name": "HouseYield Reserve",
+            "transacted_at": 1714000000
+          },
+          "propertyId": "fixture-property",
+          "sourceEventType": "stripe.financial_connections.transaction",
+          "sourceObjectId": "txn_fc_transfer_internal_1",
+          "sourceSystem": "STRIPE",
+          "userId": "fixture-user"
+        },
+        "status": "pending_match",
+        "suggestedMatch": {
+          "expectedToAccountCode": "1000",
+          "transferCategory": "cash_movement_review"
+        }
+      },
+      "label": "transfer-category-stages-cash-movement-review"
+    },
+    {
+      "candidate": {
+        "ok": false,
+        "pendingMatchInput": {
+          "amount": 2500,
+          "effectiveDate": "2024-04-25",
+          "idempotencyKey": "stripe:financial-connections:pending-match:txn_fc_transfer_stripe_1",
+          "metadata": {
+            "canonicalAccountCode": null,
+            "classificationRule": null,
+            "legacyAccountCode": null,
+            "legacyRoute": "sync-financial-connections-transactions",
+            "shadowMode": true,
+            "stripeCategory": "transfer",
+            "stripeObject": "financial_connections_transaction"
+          },
+          "notes": "Bank-side Stripe settlement is waiting to be matched to the Stripe clearing transfer before posting.",
+          "propertyId": "fixture-property",
+          "reconciliationScope": "stripe_transfer_match",
+          "sourceRef": "financial_connections_transaction:txn_fc_transfer_stripe_1",
+          "sourceSystem": "STRIPE",
+          "userId": "fixture-user"
+        },
+        "reason": "Transfer-category bank-side Stripe settlement is staged for transfer matching so it can be reconciled against the Stripe clearing event instead of dropped.",
+        "sourceEvent": {
+          "occurredAt": "2024-04-25T00:06:40.000Z",
+          "payload": {
+            "amount": 250000,
+            "category": "transfer",
+            "description": "Stripe payout transfer",
+            "id": "txn_fc_transfer_stripe_1",
+            "merchant_name": "Stripe",
+            "transacted_at": 1714003600
+          },
+          "propertyId": "fixture-property",
+          "sourceEventType": "stripe.financial_connections.transaction",
+          "sourceObjectId": "txn_fc_transfer_stripe_1",
+          "sourceSystem": "STRIPE",
+          "userId": "fixture-user"
+        },
+        "status": "pending_match",
+        "suggestedMatch": {
+          "expectedFromAccountCode": "1020",
+          "expectedToAccountCode": "1000",
+          "transferCategory": "stripe_payout_settlement"
+        }
+      },
+      "label": "transfer-category-stages-stripe-settlement-match"
+    }
+  ],
+  "fixtureName": "stripe-shadow-paths",
+  "summary": {
+    "balanceCaseCount": 1,
+    "financialConnectionsCaseCount": 2
+  }
+}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1e3a8a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="HouseYield" />
+  <link rel="apple-touch-icon" href="/icons/maskable-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Content Security Policy includes Google Street View API support, Cloud Run backends, ngrok for mobile testing, and Firebase Auth -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://localhost:3001 http://127.0.0.1:3001 https://*.ngrok-free.app https://*.ngrok-free.dev https://*.ngrok.io; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://apis.google.com https://accounts.google.com https://www.gstatic.com https://ssl.gstatic.com https://gstatic.com https://maps.googleapis.com https://maps.gstatic.com https://content-gmail.googleapis.com https://cdn.plaid.com https://js.stripe.com https://*.firebaseapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com https://maps.googleapis.com https://maps.gstatic.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://ssl.gstatic.com https://maps.gstatic.com; connect-src 'self' blob: ws: wss: http://localhost:* http://127.0.0.1:* https://*.ngrok-free.app https://*.ngrok-free.dev https://*.ngrok.io https://*.run.app https://www.googleapis.com https://accounts.google.com https://content.googleapis.com https://oauth2.googleapis.com https://gmail.googleapis.com https://places.googleapis.com https://maps.googleapis.com https://content-gmail.googleapis.com https://www.airnowapi.org https://airnowapi.org https://api.openweathermap.org https://epqs.nationalmap.gov https://api.polygon.io https://sandbox.plaid.com https://production.plaid.com https://cdn.plaid.com https://api.stripe.com https://checkout.stripe.com https://api.gateway.attomdata.com https://overpass-api.de https://api.openai.com https://api.bls.gov https://api.lumalabs.ai https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://*.firebaseio.com https://*.cloudfunctions.net https://firestore.googleapis.com https://firebasestorage.googleapis.com https://*.firebasestorage.app https://*.firebaseapp.com; manifest-src 'self'; worker-src 'self' blob:; img-src 'self' data: blob: https: http://localhost:* http://127.0.0.1:* http://*.brightmls.com http://*.cotality.com https://ssl.gstatic.com https://www.gstatic.com https://maps.googleapis.com https://maps.gstatic.com https://mt0.googleapis.com https://mt1.googleapis.com https://mt2.googleapis.com https://mt3.googleapis.com https://api.gateway.attomdata.com https://*.tile.openstreetmap.org; frame-src 'self' blob: http://localhost:* https://accounts.google.com https://content.googleapis.com https://content-gmail.googleapis.com https://cdn.plaid.com https://checkout.stripe.com https://js.stripe.com https://*.firebaseapp.com; media-src 'self' blob: mediastream:; object-src 'none'; base-uri 'self';">
+    <title>HouseYield</title>
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Force cache bust - v20251213_1810 SPHERICAL PANORAMA FIX -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx?v=20251202_1130"></script>
+  </body>
+</html>

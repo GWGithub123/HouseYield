@@ -1,0 +1,57 @@
+# Photogrammetry Pipeline Requirements
+# Install with: pip install -r requirements.txt
+
+# =============================================================================
+# CORE DEPENDENCIES (Required)
+# =============================================================================
+
+# Numerical computing
+numpy>=1.21.0
+scipy>=1.7.0
+
+# Image processing
+opencv-python>=4.5.0
+opencv-contrib-python>=4.5.0  # For SIFT and other patented features
+Pillow>=8.0.0
+
+# Machine learning for feature matching improvements
+scikit-learn>=1.0.0
+
+# =============================================================================
+# 3D PROCESSING (Required for mesh generation)
+# =============================================================================
+
+# Point cloud and mesh operations
+open3d>=0.17.0
+
+# Mesh manipulation and export (GLB, GLTF, OBJ, PLY, STL)
+trimesh>=3.21.0
+
+# For GLB/GLTF export with proper materials
+pygltflib>=1.15.0
+
+# =============================================================================
+# OPTIONAL ENHANCEMENTS
+# =============================================================================
+
+# Advanced mesh operations (hole filling, remeshing)
+# Uncomment if needed - requires additional system dependencies
+# pymeshlab>=2022.2.0
+
+# Detector-free indoor matching for blank-wall scenes
+h5py>=3.10.0
+kornia>=0.7.0
+safetensors>=0.4.3  # Fast3r pretrained checkpoint loading
+
+# Direct COLMAP Python bindings for importing learned matches
+pycolmap>=0.6.0
+
+# =============================================================================
+# UTILITIES
+# =============================================================================
+
+# Progress bars
+tqdm>=4.64.0
+
+# HTTP requests (for API integration)
+requests>=2.28.0

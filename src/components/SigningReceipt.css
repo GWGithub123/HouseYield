@@ -1,0 +1,620 @@
+/* ============================================================================
+   SIGNING RECEIPT / CERTIFICATE OF COMPLETION
+   Styled to mirror a DocuSign-style Certificate of Completion
+   ============================================================================ */
+
+.signing-receipt-container {
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  border-radius: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.signing-receipt-container.loading,
+.signing-receipt-container.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  min-height: 200px;
+}
+
+.receipt-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: receipt-spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes receipt-spin {
+  to { transform: rotate(360deg); }
+}
+
+.receipt-error-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+/* ── Header bar ─────────────────────────────────────────────────────────── */
+.receipt-header-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8e 100%);
+  color: white;
+}
+
+.receipt-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.receipt-logo {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.receipt-title-badge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.receipt-header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.receipt-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.receipt-btn.icon-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 6px 10px;
+  font-size: 16px;
+}
+
+.receipt-btn.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.receipt-btn.secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.receipt-btn.secondary:hover {
+  background: #e5e7eb;
+}
+
+/* ── Sections ───────────────────────────────────────────────────────────── */
+.receipt-section {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.receipt-section:last-of-type {
+  border-bottom: none;
+}
+
+.certificate-header {
+  padding: 20px;
+}
+
+.certificate-header h2 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #1e3a5f;
+}
+
+.cert-meta-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cert-meta-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.meta-label {
+  font-weight: 600;
+  min-width: 140px;
+  color: #374151;
+}
+
+.meta-value {
+  color: #1f2937;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.status-badge.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.in\ progress,
+.status-badge.in-progress {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.cert-meta-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.cert-col strong {
+  display: block;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+
+/* ── Section headers (table-like gray bars) ─────────────────────────────── */
+.section-header {
+  background: #d1d5db;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #111827;
+}
+
+.section-header.clickable {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-header.clickable:hover {
+  background: #c4c9cf;
+}
+
+.toggle-icon {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.section-header-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr;
+  background: #d1d5db;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  color: #111827;
+}
+
+.section-col {
+  font-style: italic;
+}
+
+/* ── Record tracking ────────────────────────────────────────────────────── */
+.tracking-grid {
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tracking-item {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.tracking-label {
+  font-weight: 600;
+  min-width: 80px;
+  color: #374151;
+}
+
+.tracking-value {
+  color: #1f2937;
+}
+
+.tracking-date,
+.tracking-sub {
+  color: #6b7280;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+/* ── Signer event rows ──────────────────────────────────────────────────── */
+.signer-event-row,
+.cc-event-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  gap: 8px;
+}
+
+.signer-event-row:last-child,
+.cc-event-row:last-child {
+  border-bottom: none;
+}
+
+.signer-info-col,
+.cc-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.signer-name-line {
+  font-weight: 600;
+  color: #111827;
+  font-size: 14px;
+}
+
+.signer-email-line {
+  color: #3b82f6;
+  font-size: 12px;
+}
+
+.signer-detail {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.signer-consent-badge {
+  margin-top: 6px;
+  padding: 6px 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #374151;
+}
+
+.signer-consent-badge.accepted {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.signer-consent-badge.not-provided {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.signer-consent-badge.not-required {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+
+/* ── Signature column ───────────────────────────────────────────────────── */
+.signature-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signature-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sig-label {
+  font-size: 11px;
+  color: #6b7280;
+  border-top: 1px dotted #d1d5db;
+  padding-top: 2px;
+}
+
+.sig-image {
+  max-width: 180px;
+  max-height: 60px;
+  object-fit: contain;
+  margin: 4px 0;
+  filter: contrast(1.2);
+}
+
+.sig-text {
+  font-family: 'Brush Script MT', 'Segoe Script', cursive;
+  font-size: 20px;
+  color: #1e3a5f;
+}
+
+.sig-detail {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.pending-badge {
+  color: #d97706;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ── Timestamp column ───────────────────────────────────────────────────── */
+.timestamp-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  color: #4b5563;
+  justify-content: center;
+}
+
+/* ── CC status ──────────────────────────────────────────────────────────── */
+.cc-status-col {
+  display: flex;
+  align-items: center;
+}
+
+.copied-badge {
+  display: inline-block;
+  padding: 4px 18px;
+  border: 2px solid #3b82f6;
+  color: #3b82f6;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/* ── Empty sections ─────────────────────────────────────────────────────── */
+.empty-section .section-header-row {
+  opacity: 0.8;
+}
+
+.empty-row {
+  padding: 10px 16px;
+  color: #9ca3af;
+  font-style: italic;
+  font-size: 12px;
+}
+
+/* ── Envelope summary events ────────────────────────────────────────────── */
+.summary-event-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr;
+  padding: 6px 16px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.summary-event-name {
+  color: #1f2937;
+}
+
+.summary-event-status {
+  color: #6b7280;
+}
+
+.summary-event-timestamp {
+  color: #4b5563;
+}
+
+/* ── Integrity ──────────────────────────────────────────────────────────── */
+.integrity-grid {
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.integrity-status {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.integrity-status.verified {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.integrity-status.failed {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.integrity-explanation {
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.integrity-explanation.verified {
+  background: #f8fafc;
+  border: 1px solid #dbe4f0;
+  color: #334155;
+}
+
+.integrity-explanation.failed {
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  color: #9a3412;
+}
+
+.integrity-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.integrity-detail code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #374151;
+  word-break: break-all;
+}
+
+/* ── ERSD ───────────────────────────────────────────────────────────────── */
+.ersd-section .section-header {
+  background: #d1d5db;
+}
+
+.ersd-content {
+  padding: 16px 20px;
+}
+
+.ersd-meta {
+  padding: 8px 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.ersd-meta div {
+  margin-bottom: 4px;
+}
+
+.ersd-text {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #374151;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 12px;
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.ersd-text p {
+  margin: 0 0 10px 0;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+.receipt-footer {
+  padding: 16px 20px;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.footer-line {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.footer-legal {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* ── Print styles ───────────────────────────────────────────────────────── */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .signing-receipt-container {
+    border: none;
+    box-shadow: none;
+    max-width: 100%;
+  }
+
+  .receipt-header-bar {
+    position: static;
+    background: #1e3a5f !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .section-header,
+  .section-header-row {
+    background: #d1d5db !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .ersd-text {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .receipt-section {
+    break-inside: avoid;
+  }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .cert-meta-details {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .section-header-row .section-col:not(:first-child) {
+    display: none;
+  }
+
+  .signer-event-row,
+  .cc-event-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .summary-event-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

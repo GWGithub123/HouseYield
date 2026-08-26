@@ -1,0 +1,386 @@
+{
+  "bankTransactionCases": [
+    {
+      "label": "plaid-expense-builds-balanced-posted-journal-payload",
+      "payload": {
+        "amount": 142.18,
+        "category": "Repairs",
+        "categoryCode": "5000",
+        "entryDate": "2026-04-25",
+        "isExpense": true,
+        "lines": [
+          {
+            "accountCode": "5000",
+            "accountName": "Repairs",
+            "amount": 142.18,
+            "dc": "D",
+            "memo": "Home Depot",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 142.18,
+            "dc": "C",
+            "propertyId": "prop-1"
+          }
+        ],
+        "memo": "Home Depot purchase",
+        "originalAmount": -142.18,
+        "payee": "Home Depot",
+        "propertyId": "prop-1",
+        "scheduleELine": 14,
+        "source": "PLAID",
+        "sourceRef": "plaid-txn-001",
+        "type": "expense",
+        "vendor": "Home Depot"
+      }
+    }
+  ],
+  "fixtureName": "bookkeeping-shadow-paths",
+  "journalEntryCases": [
+    {
+      "candidate": {
+        "financeEventInput": {
+          "amount": 125.25,
+          "cashAccountCode": "1000",
+          "counterpartyName": "ACME Plumbing",
+          "effectiveDate": "2026-04-24",
+          "expenseAccountCode": "5000",
+          "financeEventType": "expense_paid",
+          "idempotencyKey": "bookkeeping:journal-entry:receipt-entry-1",
+          "memo": "Receipt expense",
+          "metadata": {
+            "category": "Repairs",
+            "firestoreEntrySource": "RECEIPT",
+            "firestoreJournalEntryId": "receipt-entry-1",
+            "firestoreSourceRef": "https://example.com/receipts/12345.png",
+            "hasReceipt": true,
+            "legacySource": "bookkeeping-firestore",
+            "scheduleELine": 14,
+            "shadowMode": true
+          },
+          "propertyId": "prop-1",
+          "sourceRef": "firestore_journal_entry:receipt-entry-1",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        },
+        "ok": true,
+        "sourceEvent": {
+          "occurredAt": "2026-04-24T12:00:00.000Z",
+          "payload": {
+            "accountCode": "5000",
+            "amount": 125.25,
+            "hasReceipt": true,
+            "journalEntryId": "receipt-entry-1",
+            "memo": "Receipt expense",
+            "propertyId": "prop-1",
+            "source": "RECEIPT",
+            "sourceRef": "https://example.com/receipts/12345.png",
+            "type": null
+          },
+          "propertyId": "prop-1",
+          "sourceEventType": "bookkeeping.receipt.journal_entry",
+          "sourceObjectId": "receipt-entry-1",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        }
+      },
+      "draft": {
+        "financeEventType": "expense_paid",
+        "lines": [
+          {
+            "accountCode": "5000",
+            "accountName": "Repairs",
+            "amount": 125.25,
+            "dc": "D",
+            "memo": "Receipt expense",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 125.25,
+            "dc": "C",
+            "memo": "Receipt expense",
+            "propertyId": "prop-1"
+          }
+        ],
+        "sourceRef": "firestore_journal_entry:receipt-entry-1"
+      },
+      "label": "manual-receipt-expense-falls-back-to-firestore-id"
+    },
+    {
+      "candidate": {
+        "financeEventInput": {
+          "amount": 1500,
+          "cashAccountCode": "1000",
+          "counterpartyName": null,
+          "effectiveDate": "2026-04-24",
+          "financeEventType": "income_received",
+          "idempotencyKey": "bookkeeping:qbo_import:qbo-123",
+          "incomeAccountCode": "4000",
+          "memo": "Imported rent",
+          "metadata": {
+            "category": "Rent Income",
+            "firestoreEntrySource": "QBO_IMPORT",
+            "firestoreJournalEntryId": "firestore-qbo-1",
+            "firestoreSourceRef": "qbo-123",
+            "hasReceipt": false,
+            "legacySource": "bookkeeping-firestore",
+            "scheduleELine": 3,
+            "shadowMode": true
+          },
+          "propertyId": "prop-1",
+          "sourceRef": "qbo-123",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        },
+        "ok": true,
+        "sourceEvent": {
+          "occurredAt": "2026-04-24T12:05:00.000Z",
+          "payload": {
+            "accountCode": "4000",
+            "amount": 1500,
+            "hasReceipt": false,
+            "journalEntryId": "firestore-qbo-1",
+            "memo": "Imported rent",
+            "propertyId": "prop-1",
+            "source": "QBO_IMPORT",
+            "sourceRef": "qbo-123",
+            "type": null
+          },
+          "propertyId": "prop-1",
+          "sourceEventType": "bookkeeping.qbo_import.journal_entry",
+          "sourceObjectId": "qbo_import:qbo-123",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        }
+      },
+      "draft": {
+        "financeEventType": "income_received",
+        "lines": [
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 1500,
+            "dc": "D",
+            "memo": "Imported rent",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "4000",
+            "accountName": "Rent Income",
+            "amount": 1500,
+            "dc": "C",
+            "memo": "Imported rent",
+            "propertyId": "prop-1"
+          }
+        ],
+        "sourceRef": "qbo-123"
+      },
+      "label": "qbo-import-uses-stable-source-ref"
+    },
+    {
+      "candidate": {
+        "financeEventInput": {
+          "amount": 87.4,
+          "cashAccountCode": "1000",
+          "counterpartyName": "ACE Hardware",
+          "effectiveDate": "2026-04-24",
+          "expenseAccountCode": "5000",
+          "financeEventType": "expense_paid",
+          "idempotencyKey": "bookkeeping:sample_feed:sample-feed-77",
+          "memo": "Hardware store",
+          "metadata": {
+            "category": "Repairs",
+            "firestoreEntrySource": "SAMPLE_FEED",
+            "firestoreJournalEntryId": "firestore-sample-1",
+            "firestoreSourceRef": "sample-feed-77",
+            "hasReceipt": false,
+            "legacySource": "bookkeeping-firestore",
+            "scheduleELine": 14,
+            "shadowMode": true
+          },
+          "propertyId": "prop-1",
+          "sourceRef": "sample-feed-77",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        },
+        "ok": true,
+        "sourceEvent": {
+          "occurredAt": "2026-04-24T12:10:00.000Z",
+          "payload": {
+            "accountCode": "5000",
+            "amount": 87.4,
+            "hasReceipt": false,
+            "journalEntryId": "firestore-sample-1",
+            "memo": "Hardware store",
+            "propertyId": "prop-1",
+            "source": "SAMPLE_FEED",
+            "sourceRef": "sample-feed-77",
+            "type": null
+          },
+          "propertyId": "prop-1",
+          "sourceEventType": "bookkeeping.sample_feed.journal_entry",
+          "sourceObjectId": "sample_feed:sample-feed-77",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        }
+      },
+      "draft": {
+        "financeEventType": "expense_paid",
+        "lines": [
+          {
+            "accountCode": "5000",
+            "accountName": "Repairs",
+            "amount": 87.4,
+            "dc": "D",
+            "memo": "Hardware store",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "1000",
+            "accountName": "Operating Cash",
+            "amount": 87.4,
+            "dc": "C",
+            "memo": "Hardware store",
+            "propertyId": "prop-1"
+          }
+        ],
+        "sourceRef": "sample-feed-77"
+      },
+      "label": "sample-feed-uses-stable-source-ref"
+    }
+  ],
+  "reclassificationCases": [
+    {
+      "candidate": {
+        "financeEventInput": {
+          "amount": 200,
+          "creditAccountCode": "5000",
+          "debitAccountCode": "5100",
+          "effectiveDate": "2026-04-24",
+          "financeEventType": "account_reclassified",
+          "idempotencyKey": "bookkeeping:reclassification:entry-expense-reclass:2026-04-24T16:30:00.000Z",
+          "memo": "Reclassification: Repairs -> Utilities",
+          "metadata": {
+            "fromAccountCode": "5000",
+            "fromScheduleELine": 14,
+            "journalEntryId": "entry-expense-reclass",
+            "legacySource": "bookkeeping-firestore",
+            "reclassifiedBy": "reviewer@example.com",
+            "shadowMode": true,
+            "toAccountCode": "5100",
+            "toScheduleELine": 17
+          },
+          "propertyId": "prop-1",
+          "sourceRef": "firestore_journal_entry:entry-expense-reclass:reclassification:2026-04-24T16:30:00.000Z",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        },
+        "ok": true,
+        "sourceEvent": {
+          "occurredAt": "2026-04-24T16:30:00.000Z",
+          "payload": {
+            "amount": 200,
+            "fromAccountCode": "5000",
+            "fromCategory": "Repairs",
+            "fromScheduleELine": 14,
+            "journalEntryId": "entry-expense-reclass",
+            "toAccountCode": "5100",
+            "toCategory": "Utilities",
+            "toScheduleELine": 17
+          },
+          "propertyId": "prop-1",
+          "sourceEventType": "bookkeeping.reclassification.journal_entry",
+          "sourceObjectId": "entry-expense-reclass:reclassification:2026-04-24T16:30:00.000Z",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        }
+      },
+      "draft": {
+        "financeEventType": "account_reclassified",
+        "lines": [
+          {
+            "accountCode": "5100",
+            "accountName": "Utilities",
+            "amount": 200,
+            "dc": "D",
+            "memo": "Reclassification: Repairs -> Utilities",
+            "propertyId": "prop-1"
+          },
+          {
+            "accountCode": "5000",
+            "accountName": "Repairs",
+            "amount": 200,
+            "dc": "C",
+            "memo": "Reclassification: Repairs -> Utilities",
+            "propertyId": "prop-1"
+          }
+        ],
+        "sourceRef": "firestore_journal_entry:entry-expense-reclass:reclassification:2026-04-24T16:30:00.000Z"
+      },
+      "label": "expense-account-reclassification-becomes-adjustment-entry"
+    },
+    {
+      "candidate": {
+        "ok": false,
+        "pendingMatchInput": {
+          "amount": 75,
+          "effectiveDate": "2026-04-24",
+          "idempotencyKey": "bookkeeping:reclassification-review:entry-metadata-review:2026-04-24T16:31:00.000Z",
+          "metadata": {
+            "fromAccountCode": "5999",
+            "fromScheduleELine": 19,
+            "journalEntryId": "entry-metadata-review",
+            "legacySource": "bookkeeping-firestore",
+            "reclassifiedBy": "reviewer@example.com",
+            "shadowMode": true,
+            "toAccountCode": "5999",
+            "toScheduleELine": 13
+          },
+          "notes": "Metadata-only reclassification requires reviewer approval before canonical output changes.",
+          "propertyId": "prop-1",
+          "reconciliationScope": "bookkeeping_reclassification_review",
+          "sourceRef": "firestore_journal_entry:entry-metadata-review:reclassification:2026-04-24T16:31:00.000Z",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        },
+        "reason": "Metadata-only reclassification changed reporting labels without changing ledger accounts, so it is staged for canonical review instead of silently mutating the ledger.",
+        "sourceEvent": {
+          "occurredAt": "2026-04-24T16:31:00.000Z",
+          "payload": {
+            "amount": 75,
+            "fromAccountCode": "5999",
+            "fromCategory": "Other Expenses",
+            "fromScheduleELine": 19,
+            "journalEntryId": "entry-metadata-review",
+            "toAccountCode": "5999",
+            "toCategory": "Bank Fees",
+            "toScheduleELine": 13
+          },
+          "propertyId": "prop-1",
+          "sourceEventType": "bookkeeping.reclassification.journal_entry",
+          "sourceObjectId": "entry-metadata-review:reclassification:2026-04-24T16:31:00.000Z",
+          "sourceSystem": "HOUSEYIELD",
+          "userId": "fixture-user"
+        },
+        "status": "pending_review",
+        "suggestedMatch": {
+          "fromScheduleELine": 19,
+          "journalEntryId": "entry-metadata-review",
+          "reviewType": "metadata_only_reclassification",
+          "toScheduleELine": 13
+        }
+      },
+      "draft": null,
+      "label": "metadata-only-reclassification-stages-review"
+    }
+  ],
+  "summary": {
+    "bankTransactionCaseCount": 1,
+    "journalEntryCaseCount": 3,
+    "reclassificationCaseCount": 2
+  }
+}
