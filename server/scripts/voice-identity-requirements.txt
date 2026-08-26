@@ -1,7 +1,0 @@
-# Python dependencies for HouseYield voice identity verification
-# Install with: pip3 install -r server/scripts/voice-identity-requirements.txt
-
-numpy>=1.24.0
-torch>=2.2.0
-torchaudio>=2.2.0
-speechbrain>=1.0.0

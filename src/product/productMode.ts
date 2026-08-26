@@ -59,6 +59,7 @@ const FULL_PROPERTY_WORKSPACE_TABS: readonly PropertyWorkspaceTabId[] = [
 const MAINTENANCE_PROPERTY_WORKSPACE_TABS: readonly PropertyWorkspaceTabId[] = [
   'overview',
   'analytics',
+  'rentalPricingPower',
   'propertyHealth',
 ] as const;
 
@@ -70,7 +71,10 @@ const FULL_MANAGEMENT_TABS: readonly ManagementTabId[] = [
 ] as const;
 
 const MAINTENANCE_MANAGEMENT_TABS: readonly ManagementTabId[] = [
+  'documents',
+  'tenants',
   'maintenance',
+  'tax',
 ] as const;
 
 /** Owner routes that exist in the full PMS but are not part of Maintenance Orchestration. */
@@ -114,7 +118,7 @@ export function isSidebarNavItemEnabled(id: SidebarNavItemId): boolean {
 }
 
 export function getManagementNavLabel(): string {
-  return isMaintenanceProduct() ? 'Maintenance' : 'Management';
+  return 'Management';
 }
 
 export function getPropertyWorkspaceTabs(): readonly PropertyWorkspaceTabId[] {

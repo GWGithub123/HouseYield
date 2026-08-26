@@ -14,7 +14,6 @@ import { isMaintenanceProductMode } from './productMode.js';
 /** Full PMS / internal-only prefixes blocked in maintenance orchestration mode. */
 const BLOCKED_PREFIXES = [
   '/api/market-analysis',
-  '/api/rental-pricing',
   '/api/attom/absentee',
   '/api/attom/assumable',
   '/api/renovation-roi',
