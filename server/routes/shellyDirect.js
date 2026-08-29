@@ -44,9 +44,10 @@ import {
   listRelayShutoffTargetsForProperty,
   syncPropertyLocalShutoff,
 } from '../services/shellyLocalShutoff.js';
-import { handleShellyCloudWebhook } from '../services/shellyCloudWebhookHandler.js';
+import { handleShellyCloudWebhook, persistFloodAlertToCloud } from '../services/shellyCloudWebhookHandler.js';
 import climateHistorySampler, { resetClimateGhostPurgeThrottle } from '../services/climateHistorySampler.js';
 import shellyWsServer from '../services/shellyWebSocketServer.js';
+import { resolvePracticeSmsPhone } from '../utils/practiceTestPhone.js';
 import { buildPropertyInfoForSensorAlert } from '../utils/sensorAlertOwner.js';
 import {
   buildOwnerDispatchKey,
@@ -77,6 +78,26 @@ export function setSensorMaintenanceDispatchHandler(handler) {
 function shouldDispatchOwnerMaintenanceForAlert(alert = {}) {
   const type = String(alert.type || '').toLowerCase();
   return type === 'flood' || type === 'water_leak';
+}
+
+function isFloodDeviceRecord(device = {}) {
+  const type = String(device.type || '').toLowerCase();
+  const deviceType = String(device.deviceType || '').toLowerCase();
+  const hay = `${device.name || ''} ${device.location || ''} ${device.deviceId || ''} ${device.model || ''}`.toLowerCase();
+  return type === 'flood'
+    || type === 'water_leak'
+    || deviceType.includes('flood')
+    || hay.includes('flood')
+    || (Array.isArray(device.capabilities) && device.capabilities.includes('flood'));
+}
+
+function pickDemoFloodDevice(devices = []) {
+  const floods = devices.filter(isFloodDeviceRecord);
+  if (!floods.length) return null;
+  const basement = floods.find((device) => (
+    /basement|utility|laundry/.test(`${device.name || ''} ${device.location || ''}`.toLowerCase())
+  ));
+  return basement || floods[0];
 }
 
 async function markAlertOwnerMaintenanceDispatched(alertId, ownerMaintenanceDispatch = null) {
@@ -2688,6 +2709,68 @@ router.post('/alerts/:alertId/notify', async (req, res) => {
     res.status(500).json({ 
       success: false, 
       error: error.message 
+    });
+  }
+});
+
+/**
+ * POST /api/shelly/demo/flood-alert
+ * Write a flood alert for a registered sensor so the twin, auto-shutoff,
+ * and maintenance dispatch run the live pipeline.
+ */
+router.post('/demo/flood-alert', async (req, res) => {
+  try {
+    const { deviceId: requestedDeviceId, deviceDocId, propertyId } = req.body || {};
+    let deviceId = requestedDeviceId ? String(requestedDeviceId).trim() : '';
+    if (!deviceId && deviceDocId) deviceId = String(deviceDocId).trim();
+
+    if (!deviceId) {
+      const devices = await listCloudDevices();
+      const scoped = propertyId
+        ? devices.filter((device) => String(device.propertyId || '') === String(propertyId))
+        : devices;
+      const picked = pickDemoFloodDevice(scoped.length ? scoped : devices);
+      deviceId = String(picked?.deviceId || picked?.id || '').trim();
+    }
+
+    if (!deviceId) {
+      return res.status(404).json({
+        success: false,
+        error: 'No flood sensor is registered for this property.',
+      });
+    }
+
+    const alertId = await persistFloodAlertToCloud(deviceId, {
+      source: 'demo_hotkey',
+      isFlooded: true,
+      timestamp: new Date().toISOString(),
+    }, { force: true, waitForShutoff: false });
+
+    res.json({
+      success: true,
+      alertId,
+      deviceId,
+    });
+
+    if (!alertId) return;
+
+    const practiceTestPhone = req.body?.practiceTestPhone || resolvePracticeSmsPhone();
+    autoNotifyTenantForAlert(alertId, {
+      req,
+      force: true,
+      sendEmail: true,
+      sendSMS: true,
+      makePhoneCall: true,
+      practiceTestPhone,
+      dispatchOwnerMaintenance: true,
+    }).catch((error) => {
+      console.error('[Shelly Demo Flood] Notify failed:', error);
+    });
+  } catch (error) {
+    console.error('[Shelly Demo Flood] Error:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
     });
   }
 });

@@ -70,6 +70,7 @@ import { Link } from 'react-router-dom';
 import {
   type MaintenanceProgressRequest,
 } from './MaintenanceProgressTracker';
+import FloodDispatchFeed from './twin/FloodDispatchFeed';
 import { Modal } from '../design-system/components/Modal';
 import {
   submitMaintenanceRequest,
@@ -345,96 +346,6 @@ export function buildSensorMaintenanceDraft({
 }
 
 /** Compact flood-panel summary — full stepper is too wide for this column. */
-function FloodAlertMaintenanceCard({
-  request,
-  alertMessage,
-}: {
-  request: MaintenanceProgressRequest;
-  alertMessage?: string;
-}) {
-  const provider = request.aiAutomation?.selectedProvider;
-  const providerName = provider?.name || request.scheduledVisit?.providerName || null;
-  const providerPhone = provider?.phone || request.scheduledVisit?.providerPhone || null;
-  const sms = request.ownerSmsNotifications;
-  const awaitingYes = request.aiAutomation?.status === 'awaiting_owner_confirmation'
-    || sms?.status === 'pending';
-  const declined = sms?.status === 'declined';
-  const scheduled = Boolean(request.scheduledVisit?.confirmed && request.scheduledVisit?.startAt);
-  const issue = cleanMaintenanceIssue(request.description || alertMessage || 'Flood / leak detected');
-
-  let nextStep: string;
-  if (declined) {
-    nextStep = 'On hold (you replied NO). Reply YES to the owner SMS to restart scheduling.';
-  } else if (awaitingYes) {
-    nextStep = sms?.ownerPhone
-      ? `To schedule: reply YES to the text at ${sms.ownerPhone}. We’ll call ${providerName || 'the provider'} and book a visit.`
-      : `To schedule: reply YES to the owner SMS. We’ll call ${providerName || 'the provider'} and book a visit.`;
-  } else if (scheduled && request.scheduledVisit) {
-    const when = formatMaintenanceVisit(request.scheduledVisit.startAt, request.scheduledVisit.endAt, request.scheduledVisit.timezone);
-    nextStep = when ? `Scheduled for ${when}.` : 'Visit is scheduled. See Maintenance for details.';
-  } else if (providerName) {
-    nextStep = `Calling ${providerName} to book a time. You’ll get a confirmation text when it’s scheduled — or open Property Management → Maintenance to track the call.`;
-  } else {
-    nextStep = 'Finding a nearby plumber. You’ll get a text when one’s ready — reply YES to schedule.';
-  }
-
-  return (
-    <div className="space-y-2.5">
-      <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Maintenance</p>
-      <div>
-        <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Issue</p>
-        <p className="mt-0.5 text-[12px] font-medium leading-snug text-slate-800">{issue}</p>
-      </div>
-      <div>
-        <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Provider</p>
-        {providerName ? (
-          <div className="mt-0.5">
-            <p className="text-[12px] font-semibold text-slate-900">{providerName}</p>
-            {providerPhone && (
-              <a
-                href={`tel:${providerPhone}`}
-                className="mt-0.5 inline-block text-[11px] font-medium text-blue-700 hover:underline"
-              >
-                {providerPhone}
-              </a>
-            )}
-          </div>
-        ) : (
-          <p className="mt-0.5 text-[12px] text-slate-500">Still searching…</p>
-        )}
-      </div>
-      <div className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-2">
-        <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Next step</p>
-        <p className="mt-0.5 text-[12px] leading-snug text-slate-700">{nextStep}</p>
-      </div>
-    </div>
-  );
-}
-
-function formatMaintenanceVisit(startAt?: string, endAt?: string | null, timezone?: string): string {
-  if (!startAt) return '';
-  const start = new Date(startAt);
-  if (Number.isNaN(start.getTime())) return '';
-  const tz = timezone || 'America/New_York';
-  const startLabel = start.toLocaleString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-    timeZone: tz,
-  });
-  if (!endAt) return startLabel;
-  const end = new Date(endAt);
-  if (Number.isNaN(end.getTime())) return startLabel;
-  const endLabel = end.toLocaleString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    timeZone: tz,
-  });
-  return `${startLabel} – ${endLabel}`;
-}
-
 type TopologyDeviceKind = 'flood' | 'gateway' | 'ht' | 'relay' | 'other';
 
 /** What the interior camera is framing: the whole section, a room, or one device. */
@@ -3621,6 +3532,18 @@ function DeviceDetailPanel({
 
       {kind === 'flood' && (
         <div className="mt-3 space-y-3">
+          {selectedFloodAlert && (
+            <div className="rounded-xl border border-slate-200 bg-white p-3">
+              {linkedRequestStatus === 'error' && !linkedRequest && (
+                <p className="mb-2 text-[11px] text-rose-600">{linkedRequestError || 'Could not load maintenance details.'}</p>
+              )}
+              <FloodDispatchFeed
+                request={linkedRequest}
+                alertMessage={selectedFloodAlert.message}
+              />
+            </div>
+          )}
+
           <div className="overflow-hidden rounded-xl border border-slate-200 bg-slate-50/80">
             <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2">
               <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
@@ -3679,34 +3602,6 @@ function DeviceDetailPanel({
               </div>
             )}
           </div>
-
-          {selectedFloodAlert && (
-            <div className="rounded-xl border border-slate-200 bg-white p-3">
-              {linkedRequestStatus === 'loading' && (
-                <p className="text-[11px] text-slate-500">Loading maintenance…</p>
-              )}
-              {linkedRequestStatus === 'error' && (
-                <p className="text-[11px] text-rose-600">{linkedRequestError || 'Could not load maintenance details.'}</p>
-              )}
-              {linkedRequestStatus === 'missing' && (
-                <div className="space-y-1">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Maintenance</p>
-                  <p className="text-[12px] leading-snug text-slate-600">
-                    {linkedRequestError || 'No maintenance request for this alert yet.'}
-                  </p>
-                  <p className="text-[11px] leading-snug text-slate-500">
-                    When dispatch runs, you’ll get a text — reply YES to approve the provider and schedule a visit.
-                  </p>
-                </div>
-              )}
-              {linkedRequestStatus === 'ok' && linkedRequest && (
-                <FloodAlertMaintenanceCard
-                  request={linkedRequest}
-                  alertMessage={selectedFloodAlert.message}
-                />
-              )}
-            </div>
-          )}
         </div>
       )}
 
